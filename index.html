@@ -63,6 +63,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
   <link rel="manifest" href="/assets/img/favicon/manifest.json" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -85,13 +86,20 @@
       <li class="logo">
         <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
           class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
+          <img src="/assets/img/pic.jpg" class="circle img-responsive profile-pic" alt="avatar">
         </a>
       </li>
 
+<!--      <li class="bold">-->
+<!--        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i-->
+<!--            class="mdi-social-person small"></i><span>About</span></a>-->
+<!--      </li>-->
       <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
+        <!--
+        ICONS:
+        -->
+        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
+            class="mdi-social-school small"></i><span>Education</span></a>
       </li>
       <li class="bold">
         <a aria-label="Navigate to the Experience section" href="#experience"
@@ -102,7 +110,7 @@
       <li class="bold">
         <!-- mdi-av-web small
              mdi-av-my-library-books small-->
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
+        <a aria-label="Navigate to the Projects section" href="#publications" class="waves-effect waves-dark teal-text"><i
             class="mdi-av-my-library-books small"></i><span>Publications</span></a>
       </li>
 
@@ -113,16 +121,18 @@
         mdi-social-poll
         mdi-av-equalizer
         -->
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
+        <a aria-label="Navigate to the Skills section" href="#projects" class="waves-effect waves-dark teal-text"><i
             class="mdi-action-assessment small"></i><span>Projects</span></a>
       </li>
-      
       <li class="bold">
         <!--
         ICONS:
+        mdi-action-assessment
+        mdi-social-poll
+        mdi-av-equalizer
         -->
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
+        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
+            class="mdi-action-assessment small"></i><span>Skills</span></a>
       </li>
 
       <li class="bold">
@@ -165,9 +175,13 @@
   <!-- Nav class 3 -->
   <nav class="hide-on-large only">
     <ul id="slide-out" class="side-nav">
+<!--      <li class="bold">-->
+<!--        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i-->
+<!--            class="mdi-social-person small"></i><span>About</span></a>-->
+<!--      </li>-->
       <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
+        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
+            class="mdi-social-school small"></i><span>Education</span></a>
       </li>
       <li class="bold">
         <a aria-label="Navigate to the Experience section" href="#experience"
@@ -175,18 +189,19 @@
             class="mdi-action-trending-up small"></i><span>Experience</span></a>
       </li>
       <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
+        <a aria-label="Navigate to the Projects section" href="#publications" class="waves-effect waves-dark teal-text"><i
             class="mdi-av-my-library-books small"></i><span>Publications</span></a>
       </li>
       <li class="bold">
+        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
+            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
+      </li>
+      <li class="bold">
         <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Projects</span></a>
+            class="mdi-action-assessment small"></i><span>Skills</span></a>
       </li>
 
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
+
       <li class="bold">
         <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
             class="mdi-content-mail small"></i><span>Contact</span></a>
@@ -209,21 +224,58 @@
           <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
             <div class="caption">
               <h2>Hi, I'm <span class="teal">Raihan Mia.</span></h2>
-              <h5 style="color:#fff">A <span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
+              <h5 style="color:#fff"><span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
               <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
-              <h5>Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving a complex and challenging real-world problems.</h5>
+<!--              <h5>Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving a complex and challenging real-world problems.</h5>-->
+            <h5>
+          I am a Computer Science Ph.D. Student at Marquette University. My advisor is <a href="http://www.mscs.mu.edu/~iq/" target="_blank">Dr. Sheikh Iqbal Ahamed, Ph.D.</a> and co-advisor is <a href="https://www.marquette.edu/occupational-therapy/directory/samuel-nemanich.php" target="_blank">Samuel Nemanich, Ph.D., MSCI</a>.
+              My research concentrates on neuromotor analysis and rehabilitation technology development using biomedical devices, sensors, and mHealth, particularly upper-limb motor assessment for children with cerebral palsy.
+        </h5>
+        <p>
+          <ul>
+            <li><u>Research Area:</u> Motor Tasks/Games Design, Bioelectric Signal Processing, Clinical Informatics, Big Data and Machine Learning</li>
+            <li><u>Specialization:</u> Data Science, Deep Learning, Algorithm, Statistics, and Intervention </li>
+            <li><u>Programing:</u> Python, C++, Objective-C, Swift, Matlab</li>
+            <li><u>Tools & Technologies:</u> OpenSim, EEGLab, AWS, Git, Docker</li>
+          </ul>
+
+        </p>
+
+        <!-- <p>
+
+          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.
+        </p> -->
+        <p style="color: greenyellow">
+          Looking for an internship opportunity to work in a challenging position combining my skills in data science background.
+        </p>
             </div>
             <div class="social">
-              <a href="http://linkedin.com/in/varadbhogayata" target="_blank">
+              <a href="https://scholar.google.com/citations?user=dVcVjisAAAAJ&hl=en" target="_blank">
+                <button class="icon-btn">
+                  <i class="ai ai-google-scholar-square"></i>
+                </button>
+              </a>
+              <a href="https://www.scopus.com/authid/detail.uri?authorId=57215321013" target="_blank">
+                <button class="icon-btn">
+                  <i class="ai ai-researchgate"></i>
+                </button>
+              </a>
+              <a href="https://www.researchgate.net/profile/Mia-Md-Raihan" target="_blank">
+                <button class="icon-btn">
+                  <i class="ai ai-scopus"></i>
+                </button>
+              </a>
+              <a href="https://www.linkedin.com/in/mia-md-raihan-228a16156/" target="_blank">
                 <button class="icon-btn linkedin">
                   <i class="fa fa-linkedin"></i>
                 </button>
               </a>
-              <a href="https://github.com/varadbhogayata/" target="_blank">
+              <a href="https://github.com/RaihanSabique" target="_blank">
                 <button class="icon-btn github">
                   <i class="fa fa-github"></i>
                 </button>
               </a>
+              <a href="#contact" class="readme">Contact Me</a>
 
               <!-- <a href="https://angel.co/u/varad_bhogayata" target="_blank">
                 <button class="icon-btn angellist">
@@ -239,63 +291,94 @@
                   </span>
               </a> -->
             </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
+<!--            <div class='buttons'>-->
+<!--              <a href="#about" class="readme">Read More</a>-->
+<!--              <a href="#contact" class="contactme">Contact Me</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </div>
+    </section>
+<!--  Section: Education -->
+    <section id="education" class="section scrollspy">
+      <h3 class="page-title white-text teal">Education</h3>
+      <div class="container">
+        <div class="row">
+          <!-- Education -->
+          <div class="col s12 m6 l6">
+            <div class="card">
+              <div class="card-content">
+                <p>
+<!--                  <span class="card-title"><a href="https://www.marquette.edu/" target="_blank" class="teal-text hoverline">Marquette University</a></span>-->
+                  <span><a href="https://www.marquette.edu/" target="_blank"><img alt="Zhiffy logo"
+                    src="/assets/img/marquette_university_82707.jpg" class="responsive-img center-block" height=40% width=40% /></a></span>
+                <p class="brown-text text-center">Milwaukee, Wisconsin, USA</p>
+                </p>
+
+                <p>
+                  <b>Degree: </b>Ph.D. in Computer Science
+                  <br>
+                  <b>Research Topic: </b>Corticomuscular Coherence (CMC) and Neuromotor Assessment of Upper-Limb Dysfunctions using mHealth and Sensors
+                  <br>
+                  <b>Session: </b>Fall 2022 - Present
+                  <br>
+                  <b>CGPA: </b>3.91/4.00
+                </p>
+
+                <ul>
+                  <p>
+                    <b>Relevant Courseworks:</b>
+                  <ul>
+                    <li>Advance Machine Learning</li>
+                    <li>Advanced Algorithms</li>
+                    <li>Mobile Computing</li>
+                  </ul>
+                  </p>
+
+                </ul>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col s12 m6 l6">
+            <div class="card">
+              <div class="card-content">
+                <p>
+                  <span><a href="https://www.buet.ac.bd/web/" target="_blank"><img alt="Zhiffy logo"
+                    src="/assets/img/BUET_LOGO.png" class="responsive-img center-block" height=20% width=20% /></a></span>
+                  <a href="https://www.buet.ac.bd/web/" target="_blank"  style="color: darkred">Bangladesh University of Engineering and Technology</a>
+                <p class="brown-text text-center">Dhaka, Bangladesh</p>
+                </p>
+
+                <p>
+                  <b>Degree: </b>BS in Computer Science and Engineering
+                  <br>
+                  <b>Session: </b>2014-2018
+<!--                  <b>CGPA: </b>3.13/4.33-->
+                </p>
+
+                <ul>
+                  <p>
+                    <b>Relevant Courseworks:</b>
+                  <ul>
+                  <li>Programing Language</li>
+                    <li>Data Structures and Algorithms</li>
+                    <li>Database Management Systems</li>
+                    <li>Concrete Mathematics, Calculus, Fourier Analysis, Laplace</li>
+                  <li>Algorithm Engineering</li>
+                    <li>Artificial Intelligence</li>
+                  </ul>
+                  </p>
+
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About</h3>
-      <div class="container flow-text">
-        <!-- <blockquote>
-          <h2>
-            A Software Developer with a passion for Backend Development and Artificial Intelligence.
-
-          </h2>
-        </blockquote> -->        
-        <p>
-          I am a Computer Science Grad Student at Arizona State University. I enjoy problem-solving and coding. Always strive to bring 100% to the work I do.
-
-          I have worked on technologies like Python, Django, Flask, MySQL, PostgreSQL, MongoDB, HTML5, CSS, Java, C++ during my bachelor's. I have 19 months of professional work experience which helped me strengthen my experience in Python, Flask, and Django.
-
-          I am passionate about developing complex applications that solve real-world problems impacting millions of users.
-        </p>
-        <p>
-          <ul>
-            <li><b>Languages:</b> Python, Java, JavaScript, C, C++, HTML/CSS, Bash</li>
-            <li><b>Databases:</b> MySQL, PostgreSQL, MongoDB</li>
-            <li><b>Libraries:</b> NumPy, Pandas, OpenCV</li>
-            <li><b>Frameworks:</b> Flask, Django, Node.js, Keras, TensorFlow, PyTorch, Bootstrap, Apache Beam</li>
-            <li><b>Tools & Technologies:</b> Git, Docker, AWS, GCP, Heroku, JIRA</li>
-          </ul>
-          
-        </p>
-          
-        <!-- <p>
-          
-          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.           
-        </p> -->
-        <p>
-          Looking for an opportunity to work in a challenging position combining my skills in Software Engineering, which provides professional development, interesting experiences and personal growth.
-        </p>
-        <!-- <p>
-          Another Paragraph
-        </p>  -->
-        <!-- <p>
-        <strong>Current Focus</strong>:&nbsp;<a aria-label="Navigate to the Inclusive Design Patterns homepage"
-          href="https://www.smashingmagazine.com/inclusive-design-patterns/">Accessibility</a>&nbsp;//&nbsp;<a
-          aria-label="Navigate to the Full Stack React homepage"
-          href="https://www.fullstackreact.com/">React</a>&nbsp;//&nbsp;<a
-          aria-label='Navigate to the article "Scalable CSS"'
-          href="https://mrmrs.github.io/writing/2016/03/24/scalable-css/">Design Systems</a>
-        </p> -->
-      </div>
-    </section>
 
 
     <!-- Third Section: Experience -->
@@ -456,6 +539,55 @@ of each drug container to estimate the degradation of the drug.
           </div>
         </div>
 
+      </div>
+    </section>
+
+<!--    Section: Publications-->
+    <section id="publications" class="section scrollspy">
+      <h3 class="page-title white-text teal">Publications</h3>
+      <div class="container flow-text">
+        <!-- <blockquote>
+          <h2>
+            A Software Developer with a passion for Backend Development and Artificial Intelligence.
+
+          </h2>
+        </blockquote> -->
+        <p>
+          I am a Computer Science Grad Student at Arizona State University. I enjoy problem-solving and coding. Always strive to bring 100% to the work I do.
+
+          I have worked on technologies like Python, Django, Flask, MySQL, PostgreSQL, MongoDB, HTML5, CSS, Java, C++ during my bachelor's. I have 19 months of professional work experience which helped me strengthen my experience in Python, Flask, and Django.
+
+          I am passionate about developing complex applications that solve real-world problems impacting millions of users.
+        </p>
+        <p>
+          <ul>
+            <li><b>Languages:</b> Python, Java, JavaScript, C, C++, HTML/CSS, Bash</li>
+            <li><b>Databases:</b> MySQL, PostgreSQL, MongoDB</li>
+            <li><b>Libraries:</b> NumPy, Pandas, OpenCV</li>
+            <li><b>Frameworks:</b> Flask, Django, Node.js, Keras, TensorFlow, PyTorch, Bootstrap, Apache Beam</li>
+            <li><b>Tools & Technologies:</b> Git, Docker, AWS, GCP, Heroku, JIRA</li>
+          </ul>
+
+        </p>
+
+        <!-- <p>
+
+          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.
+        </p> -->
+        <p>
+          Looking for an opportunity to work in a challenging position combining my skills in Software Engineering, which provides professional development, interesting experiences and personal growth.
+        </p>
+        <!-- <p>
+          Another Paragraph
+        </p>  -->
+        <!-- <p>
+        <strong>Current Focus</strong>:&nbsp;<a aria-label="Navigate to the Inclusive Design Patterns homepage"
+          href="https://www.smashingmagazine.com/inclusive-design-patterns/">Accessibility</a>&nbsp;//&nbsp;<a
+          aria-label="Navigate to the Full Stack React homepage"
+          href="https://www.fullstackreact.com/">React</a>&nbsp;//&nbsp;<a
+          aria-label='Navigate to the article "Scalable CSS"'
+          href="https://mrmrs.github.io/writing/2016/03/24/scalable-css/">Design Systems</a>
+        </p> -->
       </div>
     </section>
 
@@ -906,74 +1038,7 @@ of each drug container to estimate the degradation of the drug.
       </div>
     </section>
 
-    <!-- Seventh Section: Education -->
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <!-- Education -->
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.asu.edu/" target="_blank" class="teal-text hoverline">Arizona State University</a></span>
-                </p>
-                <p class="brown-text">Tempe, USA</p>
-                <p>
-                  <b>Degree: </b>Master of Science in Computer Science      
-                  <br>
-                  <b>CGPA: </b>4.0/4.0
-                </p>
 
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Distributed Database Systems</li>
-                    <li>Cloud Computing</li>
-                    <li>Foundations of Algorithms</li>                    
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-
-            
-          </div>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://ahduni.edu.in/academics/schools-centres/school-of-engineering-and-applied-science/" target="_blank" class="teal-text hoverline">School of Engineering and Applied Science, Ahmedabad
-                      University</a></span>
-                </p>
-                <p class="brown-text">Ahmedabad, India</p>
-                <p>
-                  <b>Degree: </b>Bachelor of Technology in Information and Communication Technology
-                  <br>
-                  <b>CGPA: </b>3.13/4.33
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Data Structures and Algorithms</li>
-                    <li>Database Management Systems</li>
-                    <li>Operating Systems</li>
-                    <li>Machine Learning</li>
-                    <li>Computer Vision</li>
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Eight Section: Contact -->
     <section id="contact" class="section scrollspy full-height">
@@ -1012,7 +1077,7 @@ of each drug container to estimate the degradation of the drug.
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script type="text/javascript">
     var typed = new Typed('.typing',{
-      strings: ["Pythonist", "Developer", "Fast Learner"],
+      strings: ["Researcher", "Enthusiast", "Fast Learner", "Problem Solver", "Data Lover"],
       loop: true,
       typeSpeed: 80,
       backSpeed: 40
