@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools &amp; Dataset | Raihan Mia</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .ds-container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+    .dataset-card { background: #fff; border: 1px solid #e9ecef; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); margin-bottom: 1rem; }
+    .dataset-title { font-size: 1.2rem; font-weight: 600; color: #111; margin: 0 0 0.3rem; }
+    .dataset-meta { color: #555; font-size: 0.95rem; margin: 0.2rem 0; }
+    .dataset-doi a { color: #007bff; text-decoration: underline; }
+    .dataset-desc { color: #2b2b2b; line-height: 1.7; font-size: 1.05rem; margin-top: 0.5rem; }
+  </style>
 </head>
 <body>
   <nav class="navbar-custom">
@@ -28,7 +36,7 @@
     </div>
   </nav>
   <main>
-    <section>
+  <section class="ds-container">
       <h1>Tools &amp; Dataset</h1>
       <div>
         <h2>Open-Source Tools</h2>
@@ -36,9 +44,22 @@
           <li>Coming soon: Links and descriptions of analysis pipelines (EEG, EMG, CMC), visualization scripts, and mobile data collection apps.</li>
         </ul>
         <h2>Datasets</h2>
-        <ul>
-          <li>Coming soon: Public datasets used in publications, with access instructions and documentation.</li>
-        </ul>
+        <div class="dataset-card">
+          <div class="dataset-title">Motor Skill Learning in Young Children Born Preterm</div>
+          <div class="dataset-meta"><b>Contributors:</b> Samuel Nemanich · Md. Raihan Mia · Cassandra Kemmel-Bartletti</div>
+          <div class="dataset-meta"><b>Date created:</b> 2023-07-17 11:48 AM · <b>Last updated:</b> 2025-07-22 01:11 PM</div>
+          <div class="dataset-meta dataset-doi"><b>Identifier:</b> DOI <a href="https://doi.org/10.17605/OSF.IO/W4R2F" target="_blank">10.17605/OSF.IO/W4R2F</a></div>
+          <div class="dataset-meta"><b>Category:</b> Project</div>
+          <div class="dataset-desc">
+            The primary hypothesis of this proposal is that delays in motor development in preterm children are attributed to impaired motor learning. We also hypothesize that in addition to problems with unimanual coordination, bimanual coordination is affected in preterm children based on two findings. First, CC volume and integrity are reduced in preterm infants and adolescents, and are associated with poor motor development. Second, hand preference (and related lateralization of motor cortical systems) is thought to be important for optimal unimanual and bimanual movement.
+          </div>
+        </div>
+        <div class="dataset-card">
+          <div class="dataset-title">Game-based Mobile-Health Quantification of Upper-Limb Motor Performance in Children with Hemiparetic Cerebral Palsy</div>
+          <div class="dataset-meta"><b>Contributors:</b> Cassandra Kemmel-Bartletti · Md Raihan Mia · Samuel Nemanich</div>
+          <div class="dataset-meta"><b>Date created:</b> 2025-04-01 09:36 AM · <b>Last updated:</b> 2025-06-03 02:08 PM</div>
+          <div class="dataset-meta dataset-doi"><b>Identifier:</b> DOI <a href="https://doi.org/10.17605/OSF.IO/74DJM" target="_blank">10.17605/OSF.IO/74DJM</a></div>
+        </div>
       </div>
     </section>
   </main>
