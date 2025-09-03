@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiences | Raihan Mia</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      margin-top: 40px;
+    }
+
+    /* Two-column layout */
+    .experiences-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .column h2 { margin: 0 0 1rem 0; }
+
+    .education-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .education-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #007bff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .education-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .education-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .institution-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 2px solid #f0f0f0;
+      padding: 0.5rem;
+      background: white;
+    }
+
+    .institution-info h2 {
+      margin: 0 0 0.5rem 0;
+      color: #333;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .institution-link {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .institution-link:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+
+    .degree-details {
+      margin-top: 1rem;
+    }
+
+    .degree-details p {
+      margin: 0.8rem 0;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .degree-details strong {
+      color: #333;
+      font-weight: 600;
+    }
+
+    .degree-title {
+      font-size: 1.2rem;
+      color: #007bff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .session-info {
+      background: #f8f9fa;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      border-left: 3px solid #007bff;
+    }
+
+    .advisor-info {
+      background: #f0f8ff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      border-left: 3px solid #0066cc;
+    }
+
+    .advisor-link {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .advisor-link:hover {
+      color: #004499;
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        padding: 0.75rem;
+        margin-top: 30px;
+      }
+      .experiences-grid { grid-template-columns: 1fr; }
+
+      .education-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .institution-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .institution-info h2 {
+        font-size: 1.4rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .education-item {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar-custom">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/index.html" class="navbar-logo" style="display: flex; align-items: center; text-decoration: none;">
+          <!-- profile image intentionally removed from navbar -->
+          <span class="navbar-title" style="margin-left:8px; color:#111; font-weight:600;">Raihan Mia</span>
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-menu">
+  <li><a href="/pages/experiences.html">Experiences</a></li>
+        <li><a href="/pages/research-projects.html">Research & Projects</a></li>
+        <li><a href="/pages/publications.html">Publications</a></li>
+  <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+  <section>
+  <div class="experiences-grid">
+    <div class="column">
+      <h2>Education</h2>
+      <div class="education-container">
+        
+        <!-- Ph.D. Degree -->
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/marquette_university_82707.jpg" alt="Marquette University Logo" class="institution-logo">
+            <div class="institution-info">
+              <h2>Marquette University</h2>
+              <a href="https://www.marquette.edu/" target="_blank" class="institution-link">Visit Website →</a>
+            </div>
+          </div>
+          <div class="degree-details">
+            <div class="degree-title">Ph.D. in Computer Science</div>
+            <p><strong>Dissertation Topic:</strong> Decoding Motor Control Strategies and Neuromotor Assessment of Upper-Limb Impairments using mHealth, Bio-sensors, and Machine Learning Techniques</p>
+            <div class="advisor-info">
+              <p><strong>Advisor:</strong> <a href="http://www.mscs.mu.edu/~iq/" target="_blank" class="advisor-link">Dr. Sheikh Iqbal Ahamed, Ph.D.</a></p>
+              <p><strong>Co-advisor:</strong> <a href="https://www.marquette.edu/occupational-therapy/directory/samuel-nemanich.php" target="_blank" class="advisor-link">Dr. Samuel Nemanich, Ph.D., MSCI</a></p>
+            </div>
+            <div class="session-info">
+              <strong>Session:</strong> 2022 - Present
+            </div>
+          </div>
+        </div>
+
+        <!-- Master's Degree -->
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/marquette_university_82707.jpg" alt="Marquette University Logo" class="institution-logo">
+            <div class="institution-info">
+              <h2>Marquette University</h2>
+              <a href="https://www.marquette.edu/" target="_blank" class="institution-link">Visit Website →</a>
+            </div>
+          </div>
+          <div class="degree-details">
+            <div class="degree-title">Masters in Computer Science</div>
+            <p><strong>Specialization:</strong> Machine Learning, Data Science, and Neuromotor Assessment Technologies</p>
+            <div class="session-info">
+              <strong>Session:</strong> 2022 - 2024
+            </div>
+          </div>
+        </div>
+
+        <!-- Bachelor's Degree -->
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/BUET_LOGO.png" alt="BUET Logo" class="institution-logo">
+            <div class="institution-info">
+              <h2>Bangladesh University of Engineering and Technology</h2>
+              <a href="https://www.buet.ac.bd/" target="_blank" class="institution-link">Visit Website →</a>
+            </div>
+          </div>
+          <div class="degree-details">
+            <div class="degree-title">BSc in Computer Science and Engineering</div>
+            <p><strong>Focus Areas:</strong> Software Engineering, Algorithms, Database Systems, and Artificial Intelligence</p>
+            <div class="session-info">
+              <strong>Session:</strong> 2014 - 2018
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="column" id="work-services">
+      <h2>Work &amp; Services</h2>
+      <div class="education-container">
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/ubicomp.png" alt="PMNL/Ubicomp" class="institution-logo">
+            <div class="institution-info">
+              <h2>Graduate Research Assistant, <a href="https://ubicomp.cs.mu.edu/" target="_blank">Ubicomp Lab</a> &amp; <a href="https://www.otpedsneurolab.com/" target="_blank">Pediatric Movement & Neuroscience Lab</a>, Marquette University</h2>
+            </div>
+          </div>
+          <div class="degree-details">
+            <p>Research Assistant at collaborative research project:  <a href="https://reporter.nih.gov/project-details/10821482" >NIH R03: Motor Skill Learning in Young Children Born Preterm</a> and <a href="https://reporter.nih.gov/project-details/11158930" >NIH R21: Game-based Mobile-Health Quantification of Upper-Limb Motor Performance in Children with Hemiparetic Cerebral Palsy</a></p>
+            <p><strong>Role:</strong> Design and develop iPad-based game/task for upper-limb assessment, experimental protocol, conduct research experiments, data collection, apply machine learning, statistical analysis, and visualization.</p>
+            <p><strong>Tools/Technology:</strong> iOS, Python, Matlab, EEGWorks, OpenSim, OpenSense, EEGLab, etc.</p>
+            <div class="session-info"><strong>Duration:</strong> August 2022 - Present | Milwaukee, Wisconsin, USA</div>
+          </div>
+        </div>
+
+        <!-- Research Intern, Ubitrix Inc -->
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/myimg/ubitrix_logo.png" alt="Ubitrix Inc" class="institution-logo">
+            <div class="institution-info">
+              <h2>Research Intern, <a href="https://ubitrix.com" target="_blank">Ubitrix Inc</a> — Summer 2024 &amp; Summer 2025</h2>
+            </div>
+          </div>
+          <div class="degree-details">
+            <p> <a href="https://www.hipaachecker.health/" target="_blank">HIPAAChecker.health</a> team member; contributed to software tools for security vulnerability detection and HIPAA compliance checking. Funded by NIH STTR Phase I, Phase II, and CTC-Wisconsin. <a href="https://reporter.nih.gov/project-details/10918331" target="_blank">Grant link</a>. Funds raised: $2.4M.</p>
+            <p><strong>Leadership:</strong> Led a 16-member technical team to design and implement production-grade products.</p>
+            <p><strong>Research & Development:</strong> Built HIPAA LLM API infrastructure and deployed on AWS g4dn; integrated with the HIPAACHECKER.HEALTH platform using a fine-tuned 120B open-source model. Conducted experiments, publications, and grant reports.</p>
+            <p><strong>HIPAAScoring:</strong> Developed a new HIPAA vulnerability scoring model based on NIST CVSS v4.0 and NIST SP 800-66r2 (manuscript in review, USENIX '26). Computes HIPAA risk scores from static analysis results.</p>
+          </div>
+        </div>
+
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/esrdlab.png" alt="eSRD-Lab" class="institution-logo">
+            <div class="institution-info">
+              <h2>Data Engineer, <a href="https://esrdlab.org/" target="_blank">eSystems Research and Development Lab at BUET</a></h2>
+            </div>
+          </div>
+          <div class="degree-details">
+            <p>Designed and developed infrastructure of national clinical data warehouse of Bangladesh. ETL, data processing, curation, datamart implementation, OLAP operations.</p>
+            <p><strong>Tools/Technology:</strong> Python, Hadoop, Superset, PostgreSQL, Flask, Angular</p>
+            <div class="session-info"><strong>Duration:</strong> August 2021 - July 2022 | Dhaka, Bangladesh</div>
+          </div>
+        </div>
+
+
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/esrdlab.png" alt="eSRD-Lab" class="institution-logo">
+            <div class="institution-info">
+              <h2>Research Assistant (Part-Time), <a href="https://esrdlab.org/" target="_blank">eSystems Research and Development Lab at BUET</a></h2>
+            </div>
+          </div>
+          <div class="degree-details">
+            <p>Designed and developed <a href="https://www.vinternship.org/" target="_blank">virtual internship system</a> to benchmark software development teams. Mentored 10 interns.</p>
+            <p><strong>Tools:</strong> Python, Django, MongoDB, JavaScript</p>
+            <div class="session-info"><strong>Duration:</strong> Nov 2018 - July 2020 | Dhaka, Bangladesh</div>
+          </div>
+        </div>
+
+        <div class="education-item">
+          <div class="education-header">
+            <img src="/assets/img/era.png" alt="Era Infotech Ltd" class="institution-logo">
+            <div class="institution-info">
+              <h2>Jr. Software Engineer, <a href="https://www.erainfotechbd.com/" target="_blank">Era Infotech Ltd</a></h2>
+            </div>
+          </div>
+          <div class="degree-details">
+            <p>Designed, developed and analyzed software solutions for financial institutions. Built AI-based process automation solutions for clients.</p>
+            <p><strong>Tools:</strong> Python, Flask, Java Spring Boot, Scikit-learn, OpenCV, NLTK, MySQL</p>
+            <div class="session-info"><strong>Duration:</strong> Nov 2019 - Dec 2020 | Dhaka, Bangladesh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </main>
+<script>
+  // Responsive navbar toggle for mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    var toggle = document.querySelector('.navbar-toggle');
+    var menu = document.querySelector('.navbar-menu');
+    console.log('Toggle element:', toggle);
+    console.log('Menu element:', menu);
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Toggle clicked');
+        menu.classList.toggle('open');
+        console.log('Menu classes after toggle:', menu.className);
+      });
+    } else {
+      console.log('Toggle or menu not found');
+    }
+    
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          menu.classList.remove('open');
+          console.log('Menu closed on link click');
+        }
+      });
+    });
+
+  // Two-column layout; no tabs JS needed
+  });
+</script>
+</body>
+</html>

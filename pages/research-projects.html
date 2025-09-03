@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research & Projects | Raihan Mia</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <style>
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      margin-top: 0;
+    }
+
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-item {
+      background: #fff;
+      border-radius: 12px;
+      overflow: visible;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e9ecef;
+      display: block;
+      min-height: auto;
+      padding: 1.5rem;
+    }
+
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image-container {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 1.25rem 0;
+      text-align: center;
+      background: transparent;
+      padding: 0;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 0.3s ease;
+      border-radius: 6px;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .project-item:hover .project-image {
+      transform: scale(1.03);
+    }
+
+    .project-content {
+      overflow: visible;
+      display: block;
+      clear: both;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .project-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+  font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .project-tech {
+      margin-bottom: 1rem;
+    }
+
+    .tech-label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .tech-tag {
+      background: transparent;
+      color: #495057;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #dee2e6;
+      display: inline;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      clear: both;
+      margin-top: 1rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      background: transparent;
+      color: #007bff;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #007bff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .project-link.github,
+    .project-link.publication,
+    .project-link.youtube { 
+      background: transparent; 
+      color: #007bff; 
+      border-color: #007bff;
+    }
+    .project-link.github:hover,
+    .project-link.publication:hover,
+    .project-link.youtube:hover { 
+      background: #007bff; 
+      color: #fff; 
+      border-color: #007bff;
+    }
+
+    .project-highlights {
+      background: #f8f9fa;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+      border-left: 4px solid #007bff;
+    }
+
+    .highlight-title {
+      font-weight: 600;
+      color: #333;
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1rem;
+      border-left: 3px solid #007bff;
+      padding-left: 0.8rem;
+    }
+
+    .highlight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+    }
+
+    .highlight-list li {
+      padding: 0.2rem 0;
+      margin-bottom: 0.2rem;
+      position: relative;
+      padding-left: 1.2rem;
+      color: #666;
+      line-height: 1.5;
+    }
+      /* Visibility improvements */
+      .project-title {
+        color: #111;
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+      .project-description,
+      .project-content p,
+      .research-description p {
+        color: #2b2b2b;
+  font-size: 1.1rem;
+        line-height: 1.75;
+      }
+      .highlight-list li,
+      .project-content li {
+        color: #2b2b2b;
+  font-size: 1.1rem;
+        line-height: 1.7;
+      }
+      .tech-tag {
+        color: #222;
+        border-color: #cbd5e1;
+      }
+      .tech-label, .highlight-title {
+        color: #111;
+        font-weight: 700;
+      }
+
+    .highlight-list li:before {
+      content: "•";
+      color: #007bff;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .project-item {
+        padding: 1rem;
+      }
+
+      .project-image-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 1rem 0;
+        padding: 0;
+      }
+
+      .project-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .project-content {
+        overflow: visible;
+      }
+
+      .project-description {
+        text-align: left;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .project-links {
+        flex-direction: column;
+      }
+
+      .project-link {
+        justify-content: center;
+      }
+    }    @media (max-width: 480px) {
+      .tech-stack {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tech-tag {
+        margin-bottom: 0.3rem;
+      }
+
+      .project-content {
+        padding: 1.2rem;
+      }
+
+      .project-title {
+        font-size: 1.3rem;
+      }
+
+      .project-image {
+        max-height: 180px;
+      }
+    }
+
+    /* Research Directions Styles */
+    .research-directions {
+      margin: 1.5rem 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      border-left: none;
+    }
+
+    .research-item {
+      margin-bottom: 1.5rem;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      border-left: 3px solid #007bff;
+      padding-left: 1rem;
+    }
+
+    .research-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .research-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .research-content {
+      display: block;
+      overflow: visible;
+    }
+
+    .research-figure {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 1.5rem auto;
+      text-align: center;
+      background: transparent;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .research-image {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 6px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .research-description {
+      overflow: visible;
+    }
+
+    .research-description p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+  font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .research-link {
+      margin-top: 1rem;
+    }
+
+    .research-link .project-link {
+      font-size: 0.8rem;
+      padding: 0.45rem 0.75rem;
+      background: transparent;
+      color: #007bff;
+      border: 1px solid #007bff;
+    }
+    .research-link .project-link:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    /* Ensure inline links in project content are blue */
+    .project-content a:not(.project-link),
+    .research-description a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    /* Funding Section Styles */
+    .funding-section {
+      margin: 1.5rem 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .funding-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .funding-item {
+      padding: 0;
+      background: transparent;
+      border-left: 3px solid #28a745;
+      padding-left: 1rem;
+    }
+
+    .funding-title {
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .funding-link {
+      margin-top: 0.3rem;
+    }
+
+    .funding-link .project-link {
+      background: #28a745;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .funding-link .project-link:hover {
+      background: #218838;
+    }
+
+    @media (max-width: 768px) {
+      .research-figure {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto 1.5rem auto;
+        padding: 0.6rem;
+      }
+
+      .research-image {
+        max-height: 180px;
+      }
+
+      .research-description p {
+        text-align: left;
+      }
+
+      .research-directions {
+        padding: 0;
+      }
+
+      .research-item {
+        padding: 0;
+        padding-left: 0.8rem;
+      }
+
+      .research-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar-custom">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/index.html" class="navbar-logo" style="display: flex; align-items: center; text-decoration: none;">
+          <!-- profile image intentionally removed from navbar -->
+          <span class="navbar-title" style="margin-left:8px; color:#111; font-weight:600;">Raihan Mia</span>
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-menu">
+  <li><a href="/pages/experiences.html">Experiences</a></li>
+        <li><a href="/pages/research-projects.html">Research & Projects</a></li>
+        <li><a href="/pages/publications.html">Publications</a></li>
+  <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section>
+      <!-- <h1>Research & Projects</h1> -->
+      <p style="text-align: center; font-size: 30px;">
+        Exploring innovative solutions in neuromotor assessment, healthcare technology, machine learning, and data-driven applications to improve patient outcomes and enhance rehabilitation strategies.
+      </p>
+      <div class="projects-container">
+        
+        <!-- Motor Skills Learning App -->
+        <div class="project-item">
+          <h4 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) to assess motor skills learning and performance and decoding neuromotor control strategies with micro-adaptation using AI</h4>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/experimental_protocol.png" alt="Motor Skills Learning App" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              An innovative iPad-based neuromotor assessment system designed for upper-limb movement evaluation in children with cerebral palsy. The experimental protocol integrates iPad games, EEG devices, and muscle IMU sensors for comprehensive motor skill analysis.
+            </p>
+            <div class="project-links">
+              <a href="https://www.otpedsneurolab.com/research-1" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i> View Project
+              </a>
+            </div>
+            <div class="funding-section">
+              <div class="highlight-title">Fundings:</div>
+              <div class="funding-list">
+                <div class="funding-item">
+                  <a href="https://reporter.nih.gov/project-details/10821482" >NIH R03: Motor Skill Learning in Young Children Born Preterm</a>
+                </div>
+                <div class="funding-item">
+                  <a href="https://reporter.nih.gov/project-details/11158930" >NIH R21: Game-based Mobile-Health Quantification of Upper-Limb Motor Performance in Children with Hemiparetic Cerebral Palsy</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">iOS</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">MATLAB</span>
+                <span class="tech-tag">EEGLab</span>
+                <span class="tech-tag">OpenSim</span>
+                <span class="tech-tag">AWS</span>
+              </div>
+            </div> -->
+            <div class="project-highlights">
+              <div class="highlight-title">Key Achievements:</div>
+              <ul class="highlight-list">
+                <li>Developed iPad-based neuromotor tests for upper-limb movement assessment</li>
+                <li>Integrated VICON 3D motion capture, Starstim tES 20-channels EEG and Delsys IMU sensors for comprehensive data collection</li>
+                <li>Deployed data storage, analytics, and management system on AWS</li>
+                <li>R03: Conducted feasibility studies with N=72 term and preterm children (ages 5-8), analysis data, applied machine learning techniques for decoding motor skills learning patterns</li>
+                <li>R21: Ongoing clinical intervention with N=24 children with hemiparetic cerebral palsy and N=24 age-sex matched TD (ages 6-12), developing automated assessment and analytics pipeline</li>
+                <li>Target cohort: Term & preterm born children, Children with Cerebral Palsy, Developmental Disorders, and Typical Developing Children</li>
+              </ul>
+            </div>
+
+            <div class="research-directions">
+              <div class="highlight-title">Research Directions:</div>
+               <div class="research-item">
+                <h5 class="research-title">Gamified mHealth ecosystem to Conduct remote rehabilitation studies</h5>
+                <div class="research-content">
+                  <div class="research-description">
+                    <p>Investigating the integration of gamification elements in mobile health applications to enhance user engagement and therapeutic outcomes. This research focuses on developing evidence-based game mechanics that motivate continued participation in motor skill rehabilitation programs.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="research-item">
+                <h5 class="research-title">STCRL: Spatiotemporal Contrastive Representation Learning to Decode Movement Patterns During Motor Skill Learning [In-review NeurIPS'25]</h5>
+                <div class="research-content">
+                  <div class="research-description">
+                    <p>Pattern mining in spatiotemporal movement trajectory (SMT) data is essential to understand the motor skill learning and adaptation strategies that inform neurorehabilitation practices. Movement performance metrics (i.e., speed, accuracy) are insufficient to characterize motor control strategies and learning patterns, particularly in individuals with disordered movement. Motor skill learning patterns require an interpretable sequential SMT representation that preserves spatial, temporal, and performance variables. We present a novel spatiotemporal contrastive representation learning (STCRL) framework that combines transformer-based trajectory embedding with multi-temporal contrastive learning, enabling the decoding of movement patterns and control strategies in human and non-human movement data. STCRL encodes 3D SMT into a high-dimensional latent space by preserving spatial and temporal dependencies while enabling cross-task and cross-subject knowledge transfer. We introduce an Exploration-Exploitation (E-E) analytical framework that quantifies skill learning and control strategies to balance different movement patterns and micro-adaptation. We tested and validated the STCRL with two visuomotor reaching datasets: (1) a prospectively obtained cohort of term and preterm children's motor learning and performance of unimanual and bimanual tasks, and (2) extensively overtrained non-human primates performing target-directed reaching movements. Our findings were that E-E patterns significantly correlated with the early and late phases of motor learning patterns and speed-accuracy trade-offs principles, as previously documented. STCRL framework provides an efficient computational approach for quantifying motor learning strategies with potential applications in developmental assessment, rehabilitation monitoring, and movement optimization in robotics or brain-computer interfacing research.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- HIPAAChecker.health -->
+        <div class="project-item">
+          <h3 class="project-title"><a href="https://www.hipaachecker.health" target="_blank">HIPAAChecker.health</a> - <span class="project-subtitle">Healthcare Application Security and Privacy Assessment Tools</span></h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/hipaachecker-dashboard.png" alt="HIPAAChecker.health" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              A sophisticated mHealth application security and privacy vulnerability screening platform. This tool performs comprehensive static and dynamic analysis to ensure healthcare mobile applications comply with HIPAA regulations and privacy standards.
+            </p>
+            <div class="project-highlights">
+              <div class="highlight-title">Research direction: HIPAAScoring Model</div>
+              <ul class="highlight-list">
+                <li>Addresses the gap in healthcare-specific, quantifiable security measures to guide developers and prevent HIPAA violations.</li>
+                <li>HIPAA threat model with 272 security patterns across four categories: Insufficient Authorization, Inadequate Data Security, Insecure Network Communication, and Inconsistent Audit Trail.</li>
+                <li>Integrates CVSS v4.0 metrics and NIST SP 800-66r2 to quantify a HIPAA Risk Score impacted by implemented security controls.</li>
+                <li>New annotated HIPAA benchmark dataset of 78 healthcare applications; evaluated via expert annotation and participatory design (15 testers).</li>
+                <li>Statistical validation: significant difference between compliant vs non-compliant apps (p < 0.001); logistic regression AUC = 0.891, optimal threshold 0.575 with 84% accuracy (precision 82%, recall 88%).</li>
+              </ul>
+            </div>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Security Analysis</span>
+                <span class="tech-tag">Static Analysis</span>
+                <span class="tech-tag">Dynamic Analysis</span>
+                <span class="tech-tag">HIPAA Compliance</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">Contributions:</div>
+              <ul class="highlight-list">
+                <li>Designed and implemented static and dynamic analysis pipelines for HIPAA compliance screening.</li>
+                <li>Developed HIPAAScoring — a HIPAA vulnerability risk scoring model integrating CVSS v4.0 and NIST SP 800-66r2 for quantifiable security assessment.</li>
+                <li>Built and deployed a HIPAA LLM API infrastructure on AWS g4dn; integrated with the HIPAACHECKER.HEALTH platform using a fine-tuned 120B open-source model.</li>
+                <li>Led a 16-member technical team to design, implement, and productionize security assessment tools.</li>
+                <li>Conducted experiments, authored reports/publications, and contributed to NIH STTR grant deliverables.</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://hipaachecker.health/" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i> Visit Platform
+              </a>
+              <a href="https://reporter.nih.gov/project-details/10918331" target="_blank" class="project-link">
+                <i class="fas fa-university"></i> NIH STTR Grant
+              </a>
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S2352648322000836" target="_blank" class="project-link publication">
+                <i class="ai ai-elsevier"></i> Publication
+              </a>
+            </div>
+          </div>
+        </div>
+
+         <!-- NCDW Bangladesh -->
+        <div class="project-item">
+          <h3 class="project-title">National Clinical Data Warehouse (NCDW) Bangladesh</h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/ncdw.jpg" alt="NCDW Bangladesh" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              A comprehensive clinical big data research platform designed to handle large-scale healthcare data analytics. The system features advanced data integration, ETL pipelines, and machine learning capabilities for clinical research and decision support.
+            </p>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">Hadoop</span>
+                <span class="tech-tag">Superset</span>
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">Key Features:</div>
+              <ul class="highlight-list">
+                <li>Wrapper API-based data integration system</li>
+                <li>ETL pipeline and Central Data Repository</li>
+                <li>Data marts and OLAP Engine implementation</li>
+                <li>Advanced data visualization using Superset</li>
+                <li>Machine learning pipeline for model deployment</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="http://103.94.135.217:4444/home" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+              <a href="https://github.com/eSRD-Lab" target="_blank" class="project-link github">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S2352648321000544" target="_blank" class="project-link publication">
+                <i class="ai ai-elsevier"></i> Publication
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- NBA-Search -->
+        <div class="project-item">
+          <h3 class="project-title">NBA-Search Analytics</h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/NBA-Search.png" alt="NBA-Search" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              An open-source NBA analytics platform providing comprehensive basketball statistics and player analysis. The platform implements advanced clustering algorithms and machine learning techniques for player performance evaluation and team analytics.
+            </p>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">K-Means</span>
+                <span class="tech-tag">KNN</span>
+                <span class="tech-tag">Data Analytics</span>
+                <span class="tech-tag">Machine Learning</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">My Contributions:</div>
+              <ul class="highlight-list">
+                <li>Implemented clustering algorithms (KNN, K-Means)</li>
+                <li>Developed player similarity analysis features</li>
+                <li>Created advanced statistical comparison tools</li>
+                <li>Contributed to open-source basketball analytics community</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/skekre98/NBA-Search" target="_blank" class="project-link github">
+                <i class="fab fa-github"></i> GitHub Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- vInternship.org -->
+        <div class="project-item">
+          <h3 class="project-title"> <a href="https://vinternship.org" target="_blank">vInternship.org</a> - Supporting Blended Learning Environment
+Connecting Interns, Universities and Industries</h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/vis-dashboard.png" alt="vInternship.org" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              A revolutionary virtual internship platform designed to seamlessly connect industry professionals, universities, and interns. The platform facilitates remote collaboration, skill development, and professional networking in a virtual environment.
+            </p>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">REST API</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">Leadership & Development:</div>
+              <ul class="highlight-list">
+                <li>Designed platform architecture and virtual internship protocols</li>
+                <li>Led and mentored a team of five developers</li>
+                <li>Conducted comprehensive research and optimization studies</li>
+                <li>Implemented industry-university collaboration frameworks</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://www.vinternship.org/" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i> Visit Platform
+              </a>
+              <a href="https://github.com/eSRD-Lab" target="_blank" class="project-link github">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/9392670" target="_blank" class="project-link publication">
+                <i class="ai ai-ieee"></i> IEEE Publication
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RPA System -->
+        <div class="project-item">
+          <h3 class="project-title">Robotic Process Automation (RPA) to Automate Banking Operations</h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/RPA-BankAsia.png" alt="RPA System" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              A comprehensive Robotic Process Automation system developed for <a href="https://www.bankasia-bd.com/" target="_blank">Bank Asia Ltd</a>. The solution automates repetitive banking processes, improves operational efficiency, and reduces manual errors through intelligent automation workflows.
+            </p>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Process Automation</span>
+                <span class="tech-tag">Banking Systems</span>
+                <span class="tech-tag">Agile Scrum</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">Project Achievements:</div>
+              <ul class="highlight-list">
+                <li>Designed automation system for Bank Asia Ltd operations</li>
+                <li>Implemented client requirements using Agile Scrum methodology</li>
+                <li>Developed clean, robust, and reusable automation modules</li>
+                <li>Significantly reduced manual processing time and errors</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://www.tbsnews.net/companies/bank-asia-introduces-robotic-process-automation-solutions-108277" target="_blank" class="project-link">
+                <i class="fas fa-newspaper"></i> News Article
+              </a>
+              <a href="https://www.youtube.com/watch?v=iB5cRbWEhGM" target="_blank" class="project-link youtube">
+                <i class="fab fa-youtube"></i> Demo Video
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Archive -->
+        <div class="project-item">
+          <h3 class="project-title">Digital Document Archive System for Planning Commission of Bangladesh Government</h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/DDAS.png" alt="Digital Archive" class="project-image">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              A government-level digital archival system developed for the <a href="https://plancomm.gov.bd/" target="_blank">Planning Commission of Bangladesh</a>. This comprehensive solution digitizes, processes, and manages historical documents with advanced OCR capabilities for Bengali text recognition.
+            </p>
+            <div class="project-tech">
+              <span class="tech-label">Technologies:</span>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ETL Pipeline</span>
+                <span class="tech-tag">Bangla OCR</span>
+                <span class="tech-tag">Document Processing</span>
+                <span class="tech-tag">Government Systems</span>
+              </div>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-title">Technical Contributions:</div>
+              <ul class="highlight-list">
+                <li>Designed and developed comprehensive ETL pipeline</li>
+                <li>Conducted R&D for Bengali Optical Character Recognition</li>
+                <li>Collaborated with cross-functional development teams</li>
+                <li>Implemented document digitization and archival workflows</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="http://120.50.8.205/reporting-analysis/" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i> System Access
+              </a>
+              <a href="https://www.youtube.com/watch?v=MP7YJhcRjI4&t=351s" target="_blank" class="project-link youtube">
+                <i class="fab fa-youtube"></i> System Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+<script>
+  // Responsive navbar toggle for mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('.navbar-toggle');
+    var menu = document.querySelector('.navbar-menu');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        menu.classList.toggle('open');
+      });
+    }
+    
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          menu.classList.remove('open');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

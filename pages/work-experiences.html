@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools &amp; Dataset | Raihan Mia</title>
+  <meta http-equiv="refresh" content="0; url=/pages/tools-dataset.html">
+  <link rel="canonical" href="/pages/tools-dataset.html" />
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar-custom">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/index.html" class="navbar-logo" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="/assets/img/pic.jpg" alt="Profile" class="navbar-profile-pic">
+          <span class="navbar-title" style="margin-left:8px; color:#111; font-weight:600;">Raihan Mia</span>
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-menu">
+  <li><a href="/pages/education.html">Education</a></li>
+  <li><a href="/pages/research-projects.html">Research & Projects</a></li>
+  <li><a href="/pages/publications.html">Publications</a></li>
+  <li><a href="/pages/work-experiences.html">Tools &amp; Dataset</a></li>
+  <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section>
+      <h1>Tools &amp; Dataset</h1>
+      <div>
+        <h2>Open-Source Tools</h2>
+        <ul>
+          <li>Coming soon: Links and descriptions of analysis pipelines (EEG, EMG, CMC), visualization scripts, and mobile data collection apps.</li>
+        </ul>
+        <h2>Datasets</h2>
+        <ul>
+          <li>Coming soon: Public datasets used in publications, with access instructions and documentation.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+<script>
+  // Responsive navbar toggle for mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('.navbar-toggle');
+    var menu = document.querySelector('.navbar-menu');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        menu.classList.toggle('open');
+      });
+    }
+    
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          menu.classList.remove('open');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

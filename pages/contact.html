@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Raihan Mia</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar-custom">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/index.html" class="navbar-logo" style="display: flex; align-items: center; text-decoration: none;">
+          <!-- profile image intentionally removed from navbar -->
+          <span class="navbar-title" style="margin-left:8px; color:#111; font-weight:600;">Raihan Mia</span>
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-menu">
+  <li><a href="/pages/experiences.html">Experiences</a></li>
+        <li><a href="/pages/research-projects.html">Research & Projects</a></li>
+        <li><a href="/pages/publications.html">Publications</a></li>
+  <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section>
+      <h1>Contact</h1>
+      <p><b>Address:</b> Cudahy Hall, Marquette University, Milwaukee, WI 53233 USA</p>
+      <p><b>Phone:</b> +1(414)-349-9605</p>
+      <p><b>Email:</b> <a href="mailto:mdraihan.mia@marquette.edu">mdraihan.mia@marquette.edu</a></p>
+      <p><b>GitHub:</b> <a href="https://github.com/RaihanSabique" target="_blank">github.com/RaihanSabique</a></p>
+      <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/mia-md-raihan-228a16156/" target="_blank">linkedin.com/in/mia-md-raihan-228a16156</a></p>
+    </section>
+  </main>
+<script>
+  // Responsive navbar toggle for mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('.navbar-toggle');
+    var menu = document.querySelector('.navbar-menu');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        menu.classList.toggle('open');
+      });
+    }
+    
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          menu.classList.remove('open');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
