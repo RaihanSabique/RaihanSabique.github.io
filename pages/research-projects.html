@@ -495,10 +495,11 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="navbar-menu">
-  <li><a href="/pages/experiences.html">Experiences</a></li>
+        <li><a href="/index.html">About</a></li>
+        <li><a href="/pages/experiences.html">Experiences</a></li>
         <li><a href="/pages/research-projects.html">Research & Projects</a></li>
         <li><a href="/pages/publications.html">Publications</a></li>
-  <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
+        <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
         <li><a href="/pages/contact.html">Contact</a></li>
       </ul>
     </div>
@@ -510,7 +511,21 @@
         Exploring innovative solutions in neuromotor assessment, healthcare technology, machine learning, and data-driven applications to improve patient outcomes and enhance rehabilitation strategies.
       </p>
       <div class="projects-container">
-        
+
+        <!-- NEW PROJECT: Motor Imagery Driven Mobile BCI for Motor Training and Neurorehabilitation -->
+        <div class="project-item">
+          <h3 class="project-title">Motor Imagery Driven Mobile BCI for Motor Training and Neurorehabilitation</h3> <br>
+          <div class="project-image-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+            <img src="/assets/img/myimg/Brain-Mobile-Interface-Loop-Updated.png" alt="Brain-Mobile Interface Loop" class="project-image" style="max-width: 440px;">
+            <img src="/assets/img/myimg/mBCI-Closed-Loop.png" alt="mBCI Closed Loop" class="project-image" style="max-width: 340px;">
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              Explore a novel dimension of mobile brain-computer interfacing (mBCI), a neurofeedback-based, adaptively controlled iPad game interface incorporating motor imagery (MI), action observation (AO), and movement execution (ME) of skilled upper limb movements. We introduce a new coherence-based perceptron to build the Asynchronous Deep Coherence Neural Networks (AsyncDCNN), a coherent brain-inspired neuromorphic computing approach. The mBCI design considers a tightly coupled, low-latency closed-loop channel between the mBT wireless wearable EEG headset and the iPad game engine. Our research team aims to pilot the system at the NeuroRecovery Clinic (NRC) at Marquette University, Milwaukee, to evaluate feasibility and usability in individuals with neurological disorders.
+            </p>
+          </div>
+        </div>
+
         <!-- Motor Skills Learning App -->
         <div class="project-item">
           <h4 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) to assess motor skills learning and performance and decoding neuromotor control strategies with micro-adaptation using AI</h4>
@@ -573,10 +588,10 @@
                 </div>
               </div>
               <div class="research-item">
-                <h5 class="research-title">STCRL: Spatiotemporal Contrastive Representation Learning to Decode Movement Patterns During Motor Skill Learning [In-review NeurIPS'25]</h5>
+                <h5 class="research-title">SMT-Learner: Movement Trajectory Learning to Decode Motor Control Strategies [In-review ICLR'26]</h5>
                 <div class="research-content">
                   <div class="research-description">
-                    <p>Pattern mining in spatiotemporal movement trajectory (SMT) data is essential to understand the motor skill learning and adaptation strategies that inform neurorehabilitation practices. Movement performance metrics (i.e., speed, accuracy) are insufficient to characterize motor control strategies and learning patterns, particularly in individuals with disordered movement. Motor skill learning patterns require an interpretable sequential SMT representation that preserves spatial, temporal, and performance variables. We present a novel spatiotemporal contrastive representation learning (STCRL) framework that combines transformer-based trajectory embedding with multi-temporal contrastive learning, enabling the decoding of movement patterns and control strategies in human and non-human movement data. STCRL encodes 3D SMT into a high-dimensional latent space by preserving spatial and temporal dependencies while enabling cross-task and cross-subject knowledge transfer. We introduce an Exploration-Exploitation (E-E) analytical framework that quantifies skill learning and control strategies to balance different movement patterns and micro-adaptation. We tested and validated the STCRL with two visuomotor reaching datasets: (1) a prospectively obtained cohort of term and preterm children's motor learning and performance of unimanual and bimanual tasks, and (2) extensively overtrained non-human primates performing target-directed reaching movements. Our findings were that E-E patterns significantly correlated with the early and late phases of motor learning patterns and speed-accuracy trade-offs principles, as previously documented. STCRL framework provides an efficient computational approach for quantifying motor learning strategies with potential applications in developmental assessment, rehabilitation monitoring, and movement optimization in robotics or brain-computer interfacing research.</p>
+                    <p>Spatiotemporal movement trajectory (SMT) representation is essential to understanding the motor skill learning and adaptation strategies that inform neurorehabilitation practices. Movement performance metrics (i.e., speed, accuracy) are insufficient to characterize motor control strategies and learning patterns, particularly in individuals with disordered movement. Motor skill learning patterns require an interpretable sequential SMT representation that preserves spatial, temporal, and performance variables. We present a novel SMT-Learner with transformer autoencoders that optimize performance-aware contrastive and adaptive transfer losses, combining cross-task and cross-subject transfer paradigms. SMT-Learner encodes trajectories into a high-dimensional latent space and enables motor performance-aware learning. We introduce an Exploration-Exploitation (E-E) analytical framework that quantifies motor skill learning and control strategies to balance different movement patterns and micro-adaptation. We tested and validated the SMT-Learner with two visuomotor reaching datasets: (1) a prospectively obtained cohort of term and preterm children's motor learning and performance of unimanual and bimanual tasks, and (2) extensively overtrained non-human primates performing target-directed reaching movements. Our ablation and baseline comparison across geometric, statistical, and clustering metrics demonstrated that SMT-Learner outperformed with the lowest reconstruction error (0.086) and optimized clinical correlation with motor performance variables. Investigated E-E patterns significantly correlated with the early and late stages of motor learning and speed-accuracy trade-offs principles. The SMT-Learner framework provides an efficient computational approach to quantify motor learning strategies; potential advanced downstream applications in developmental assessment, neurorehabilitation monitoring, and movement optimization in robotics or brain-computer interfacing.</p>
                   </div>
                 </div>
               </div>
@@ -585,7 +600,7 @@
             <div class="project-highlights">
               <div class="highlight-title">Related Publications:</div>
               <ul class="highlight-list">
-                <li>STCRL: Spatiotemporal Contrastive Representation Learning to Decode Movement Patterns During Motor Skill Learning. NeurIPS 2025. (In review).</li>
+                <li><a class="project-link publication" href="https://marq-my.sharepoint.com/personal/mdraihan_mia_marquette_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmdraihan%5Fmia%5Fmarquette%5Fedu%2FDocuments%2FSMT%5FLearner%5FICLR26%2Epdf&parent=%2Fpersonal%2Fmdraihan%5Fmia%5Fmarquette%5Fedu%2FDocuments&ga=1" target="_blank">SMT-Learner: Movement Trajectory Learning to Decode Motor Control Strategies. ICLR 2026. (In review).</a></li>
                 <li><a class="project-link publication" href="https://doi.org/10.2196/57802" target="_blank">Gamified mHealth System for Evaluating Upper Limb Motor Performance in Children: Cross-Sectional Feasibility Study. JMIR Serious Games, 2025.</a></li>
                 <li><a class="project-link publication" href="https://www.asnr.com/files/Past%20Meeting%20Programs/ASNR2025_Program.pdf" target="_blank">Self-Supervised Learning to Quantify Motor Control Strategies... ASNR Annual Meeting 2025 (Abstract & Poster)</a></li>
                 <li><a class="project-link publication" href="https://doi.org/10.1016/j.apmr.2025.03.028" target="_blank">Motor Skill Learning in School-Age Children Tested with a Gamified Mobile Health System. Archives of PM&R, 2025 (Abstract)</a></li>

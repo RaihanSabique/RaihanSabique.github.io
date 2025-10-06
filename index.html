@@ -49,6 +49,131 @@
     .content-area a:hover {
       color: #0056b3;
     }
+
+    /* Responsive layout for main content and sidebar */
+    @media (max-width: 900px) {
+      .main-layout {
+        flex-direction: column;
+        padding: 0;
+      }
+      .sidebar {
+        width: 100%;
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        padding: 1.2rem 0.5rem;
+      }
+      .content-area {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.2rem 0.5rem;
+      }
+    }
+
+    /* Sidebar: stack and center content on mobile */
+    @media (max-width: 600px) {
+      .sidebar .profile-section,
+      .sidebar .contact-info,
+      .sidebar .social-links,
+      .sidebar .resume-download {
+        text-align: center;
+        margin: 0 auto 1rem auto;
+        display: block;
+        width: 100%;
+      }
+      .sidebar .profile-img {
+        margin: 0 auto 0.5rem auto;
+        display: block;
+        max-width: 120px;
+        height: auto;
+      }
+    }
+
+    /* Navbar: stack menu vertically on mobile */
+    @media (max-width: 900px) {
+      .navbar-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .navbar-menu {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
+        z-index: 100;
+        border-bottom: 1px solid #eee;
+      }
+      .navbar-menu.open {
+        display: flex;
+      }
+      .navbar-menu li {
+        width: 100%;
+        padding: 0.7rem 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .navbar-toggle {
+        display: inline-flex;
+        margin-left: auto;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    /* Footer: center and wrap links on mobile */
+    @media (max-width: 600px) {
+      .site-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        margin-bottom: 0.7rem;
+      }
+      .site-footer .footer-links a {
+        margin: 0.2rem 0;
+        display: block;
+      }
+    }
+
+    /* Make images and sections scale */
+    .section img,
+    .content-area img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+
+    /* Ensure section padding is mobile-friendly */
+    @media (max-width: 600px) {
+      .section {
+        padding: 1rem 0.3rem;
+      }
+    }
+
+    /* Responsive: Move dissertation text below image on small screens */
+    @media (max-width: 700px) {
+      #about .dissertation-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.8rem !important;
+      }
+      #about .dissertation-flex img {
+        margin-bottom: 0.5rem !important;
+        max-width: 100% !important;
+      }
+      #about .dissertation-flex .dissertation-text {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+    }
   </style>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -116,10 +241,11 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="navbar-menu">
-  <li><a href="/pages/experiences.html">Experiences</a></li>
+        <li><a href="/index.html">About</a></li>
+        <li><a href="/pages/experiences.html">Experiences</a></li>
         <li><a href="/pages/research-projects.html">Research & Projects</a></li>
         <li><a href="/pages/publications.html">Publications</a></li>
-  <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
+        <li><a href="/pages/tools-dataset.html">Tools &amp; Dataset</a></li>
         <li><a href="/pages/contact.html">Contact</a></li>
       </ul>
     </div>
@@ -186,21 +312,31 @@
     <div class="content-area">
       <!-- About Me Section -->
       <section id="about" class="section">
-        <!-- <h2>About Me</h2> -->
-         <br>
+        <br>
+        <strong>Hi there!</strong><br>
         <p>
           I’m a fourth-year Computer Science Ph.D. student at Marquette University, advised by
           <a href="https://www.cs.mu.edu/~iqbal/index.html" target="_blank">Dr. Sheikh Iqbal Ahamed, Ph.D.</a>
           and co-advised by
           <a href="https://www.marquette.edu/occupational-therapy/directory/samuel-nemanich.php" target="_blank">Dr. Samuel Nemanich, Ph.D., MSCI</a>.
-          My research focuses on neuromotor analysis and rehabilitation technology—designing accessible, equitable, and clinically meaningful assessments using biomedical devices, multimodal sensors, machine learning, and mHealth systems. A core thread of my work is upper‑limb motor skills learning and performance assessment for pediatric populations, including in‑home, game‑based evaluations.
-        </p>
-        <p>
-          Originally from Dhaka, Bangladesh, I earned my B.S. in Computer Science and Engineering from the Bangladesh University of Engineering and Technology (BUET). Before and during graduate school, I helped design, build, and deploy large‑scale health informatics and mHealth platforms, with 3+ years of industry experience. I also worked with the eSystems Research and Development Lab on clinical research infrastructure and analytics.
-        </p>
-        <p>
+          My research focuses on neuromotor analysis and rehabilitation technology—designing accessible, equitable, and clinically meaningful assessments using biomedical devices, multimodal sensors, machine learning, and mHealth systems. A core thread of my work is upper‑limb motor skills learning and performance assessment, translating laboratory-based methods into in‑home, game‑based evaluations.
           Broadly, I’m interested in advancing digital health and deep learning methods to enable continuous, in‑home motor performance measurement and neurorehabilitation—bridging rigorous clinical science with usable, real‑world technology.
         </p>
+        <!-- Responsive dissertation topic block -->
+        <div class="dissertation-flex" style="display: flex; align-items: flex-start; gap: 1.5rem; margin: 1.2rem 0;">
+          <img src="assets/img/myimg/R01_Protocol.png" alt="PhD Dissertation Protocol" style="max-width:420px; width:100%; height:auto; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); background:#fafbfc; flex-shrink:0;">
+          <div class="dissertation-text" style="flex:1;">
+            <p style="margin:0;">
+              <strong>Dissertation Topic:</strong>
+              <i>Decoding Motor Control Strategies and Neuromotor Assessment using mHealth &amp; AI Integrated Biosensors System</i><br>
+              My dissertation research develops and validates an integrated system combining gamified mHealth platforms, advanced AI algorithms, and multimodal biosensors (including VICON 3D motion capture and neuroelectrics Starstim tES EEG) to decode motor control strategies and enable quantitative neuromotor assessment. 
+            </p>
+          </div>
+        </div>
+        <p>
+          <b>Background:</b> Originally, I am from Dhaka, Bangladesh. I earned my bachelor's degree in Computer Science and Engineering from the Bangladesh University of Engineering and Technology (BUET). Before and during graduate school, I helped design, build, and deploy large‑scale health informatics and mHealth platforms, with 3+ years of industry experience. I also worked with the eSystems Research and Development Lab on clinical research infrastructure and analytics.
+        </p>
+        
         <p style="color: blue; font-style: italic;">
           I’m open to work in Research Scientist roles focused on data-driven systems, machine learning, and large‑scale analytics.
         </p>
@@ -211,13 +347,12 @@
         <h3>Research Interests</h3>
         <p>
           Digital health and machine learning for neurorehabilitation. I study neuromotor analysis and
-          clinically actionable assessment systems using multimodal sensing (e.g., iPad interaction, EEG, IMU) and
-          mHealth. My current work focuses on in‑home, game‑based upper‑limb motor assessment for children with
+          clinically actionable assessment systems using multimodal sensing (e.g., mobile sensing, biosignals). My current work focuses on in‑home, game‑based upper‑limb motor assessment for children with
           cerebral palsy and developmental coordination disorder, and on methods that make these tools accessible and equitable in real‑world settings.
         </p>
         <ul>
-          <li>Representation learning, reinforcement learning, and self‑supervised methods for spatiotemporal movement trajectories and biosensor data</li>
-          <li>Multimodal sensor fusion: behavioral, physiological (EEG), and inertial (IMU)</li>
+          <li>Representation learning, reinforcement learning, and self‑supervised methods for movement performance variables, trajectories, sensors and biosignals</li>
+          <li>Multimodal sensor fusion: game-based behavioral, movement trajectories, biophysiological signals (i.e., EEG, 3D motion, IMU)</li>
           <li>In‑home, gamified mHealth assessments and adherence/engagement modeling</li>
           <li>Privacy, security, and scalable data systems for clinical research</li>
         </ul>
@@ -251,9 +386,9 @@
           </li>
           <li>
             <strong>CITI Program Certificates · Human Subjects Research</strong><br/>
-            <a href="https://www.citiprogram.org/verify/?w688c9c3c-d5c8-4fc1-9859-040039ef233d-58144638" target="_blank">Certificate 1</a> ·
-            <a href="https://www.citiprogram.org/verify/?wf671cf64-7f29-4f5e-ab94-bc010763f20c-58838431" target="_blank">Certificate 2</a> ·
-            <a href="https://www.citiprogram.org/verify/?w76b2f6b3-37cd-4a0a-b2c4-32723701b71d-59030749" target="_blank">Certificate 3</a>
+            <a href="https://www.citiprogram.org/verify/?w688c9c3c-d5c8-4fc1-9859-040039ef233d-58144638" target="_blank">RCR 1</a> ·
+            <a href="https://www.citiprogram.org/verify/?wf671cf64-7f29-4f5e-ab94-bc010763f20c-58838431" target="_blank">RCR 2</a> ·
+            <a href="https://www.citiprogram.org/verify/?w76b2f6b3-37cd-4a0a-b2c4-32723701b71d-59030749" target="_blank">RCR 3</a>
           </li>
         </ul>
       </section>
@@ -362,6 +497,20 @@
     }, 100);
   });
   </script>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="background:#f8f9fa; border-top:1px solid #e0e0e0; margin-top:2rem; padding:1.2rem 0; text-align:center; font-size:1rem; color:#222;">
+    <div class="footer-links" style="margin-bottom:0.5rem;">
+      <a href="/pages/contact.html" style="color:#007bff; text-decoration:underline; margin:0 1rem;">Contact Us</a>
+      <a href="/pages/publications.html" style="color:#007bff; text-decoration:underline; margin:0 1rem;">Publications</a>
+      <a href="/pages/experiences.html" style="color:#007bff; text-decoration:underline; margin:0 1rem;">Experiences</a>
+      <a href="/pages/research-projects.html" style="color:#007bff; text-decoration:underline; margin:0 1rem;">Research & Projects</a>
+      <a href="/pages/tools-dataset.html" style="color:#007bff; text-decoration:underline; margin:0 1rem;">Tools & Dataset</a>
+    </div>
+    <div>
+      &copy; 2025 Raihan Mia. All rights reserved.
+    </div>
+  </footer>
 </body>
 
 </html>
