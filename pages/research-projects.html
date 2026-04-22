@@ -508,7 +508,7 @@
     <section>
       <!-- <h1>Research & Projects</h1> -->
       <p style="text-align: center; font-size: 30px;">
-        Exploring innovative solutions in neuromotor assessment, healthcare technology, machine learning, and data-driven applications to improve patient outcomes and enhance rehabilitation strategies.
+        Research focus: mobile neurorehabilitation systems, edge AI + mobile BCI for real-time motor training, and healthcare security & privacy.
       </p>
       <div class="projects-container">
 
@@ -521,20 +521,23 @@
           </div>
           <div class="project-content">
             <p class="project-description">
-              Explore a novel dimension of mobile brain-computer interfacing (mBCI), a neurofeedback-based, adaptively controlled iPad game interface incorporating motor imagery (MI), action observation (AO), and movement execution (ME) of skilled upper limb movements. We introduce a new coherence-based perceptron to build the Asynchronous Deep Coherence Neural Networks (AsyncDCNN), a coherent brain-inspired neuromorphic computing approach. The mBCI design considers a tightly coupled, low-latency closed-loop channel between the mBT wireless wearable EEG headset and the iPad game engine. Our research team aims to pilot the system at the NeuroRecovery Clinic (NRC) at Marquette University, Milwaukee, to evaluate feasibility and usability in individuals with neurological disorders.
+              Mobile BCI with a low-latency closed loop between wearable EEG and a game engine. Built on AsyncDCNN, a coherence-based neuromorphic model with cross-session and cross-subject transfer for robust decoding of motor intent.
+            </p>
+            <p class="project-description">
+              AsyncDCNN introduces a coherence-based perceptron that models stable synaptic states with graded updates from pre- and post-synaptic activity. This supports asynchronous, parallel learning across forward, backward, and lateral pathways for reliable real-time decoding under non-stationary EEG.
             </p>
           </div>
         </div>
 
         <!-- Motor Skills Learning App -->
         <div class="project-item">
-          <h4 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) to assess motor skills learning and performance and decoding neuromotor control strategies with micro-adaptation using AI</h4>
+          <h4 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) for pediatric motor assessment and learning analytics</h4>
           <div class="project-image-container">
             <img src="/assets/img/myimg/experimental_protocol.png" alt="Motor Skills Learning App" class="project-image">
           </div>
           <div class="project-content">
             <p class="project-description">
-              An innovative iPad-based neuromotor assessment system designed for upper-limb movement evaluation in children with cerebral palsy. The experimental protocol integrates iPad games, EEG devices, and muscle IMU sensors for comprehensive motor skill analysis.
+              iPad-based neuromotor assessment for upper-limb performance in children. Integrates games, EEG, and IMU sensors to quantify spatiotemporal movement trajectories and learning dynamics.
             </p>
             <div class="project-links">
               <a href="https://www.otpedsneurolab.com/research-1" target="_blank" class="project-link">
@@ -568,43 +571,19 @@
             <div class="project-highlights">
               <div class="highlight-title">Key Achievements:</div>
               <ul class="highlight-list">
-                <li>Developed iPad-based neuromotor tests for upper-limb movement assessment</li>
-                <li>Integrated VICON 3D motion capture, Starstim tES 20-channels EEG and Delsys IMU sensors for comprehensive data collection</li>
-                <li>Deployed data storage, analytics, and management system on AWS</li>
-                <li>R03: Conducted feasibility studies with N=72 term and preterm children (ages 5-8), analysis data, applied machine learning techniques for decoding motor skills learning patterns</li>
-                <li>R21: Ongoing clinical intervention with N=24 children with hemiparetic cerebral palsy and N=24 age-sex matched TD (ages 6-12), developing automated assessment and analytics pipeline</li>
-                <li>Target cohort: Term & preterm born children, Children with Cerebral Palsy, Developmental Disorders, and Typical Developing Children</li>
+                <li>Developed gamified mHealth tests for upper-limb assessment</li>
+                <li>Integrated VICON, EEG, and IMU sensors for multimodal motor analytics</li>
+                <li>Built AWS-based data storage and analysis pipeline</li>
+                <li>Validated with pediatric cohorts (term, preterm, and cerebral palsy)</li>
               </ul>
-            </div>
-
-            <div class="research-directions">
-              <div class="highlight-title">Research Directions:</div>
-               <div class="research-item">
-                <h5 class="research-title">Gamified mHealth ecosystem to Conduct remote rehabilitation studies</h5>
-                <div class="research-content">
-                  <div class="research-description">
-                    <p>Investigating the integration of gamification elements in mobile health applications to enhance user engagement and therapeutic outcomes. This research focuses on developing evidence-based game mechanics that motivate continued participation in motor skill rehabilitation programs.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="research-item">
-                <h5 class="research-title">SMT-Learner: Movement Trajectory Learning to Decode Motor Control Strategies [In-review ICLR'26]</h5>
-                <div class="research-content">
-                  <div class="research-description">
-                    <p>Spatiotemporal movement trajectory (SMT) representation is essential to understanding the motor skill learning and adaptation strategies that inform neurorehabilitation practices. Movement performance metrics (i.e., speed, accuracy) are insufficient to characterize motor control strategies and learning patterns, particularly in individuals with disordered movement. Motor skill learning patterns require an interpretable sequential SMT representation that preserves spatial, temporal, and performance variables. We present a novel SMT-Learner with transformer autoencoders that optimize performance-aware contrastive and adaptive transfer losses, combining cross-task and cross-subject transfer paradigms. SMT-Learner encodes trajectories into a high-dimensional latent space and enables motor performance-aware learning. We introduce an Exploration-Exploitation (E-E) analytical framework that quantifies motor skill learning and control strategies to balance different movement patterns and micro-adaptation. We tested and validated the SMT-Learner with two visuomotor reaching datasets: (1) a prospectively obtained cohort of term and preterm children's motor learning and performance of unimanual and bimanual tasks, and (2) extensively overtrained non-human primates performing target-directed reaching movements. Our ablation and baseline comparison across geometric, statistical, and clustering metrics demonstrated that SMT-Learner outperformed with the lowest reconstruction error (0.086) and optimized clinical correlation with motor performance variables. Investigated E-E patterns significantly correlated with the early and late stages of motor learning and speed-accuracy trade-offs principles. The SMT-Learner framework provides an efficient computational approach to quantify motor learning strategies; potential advanced downstream applications in developmental assessment, neurorehabilitation monitoring, and movement optimization in robotics or brain-computer interfacing.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
             <div class="project-highlights">
               <div class="highlight-title">Related Publications:</div>
               <ul class="highlight-list">
-                <li><a class="project-link publication" href="https://marq-my.sharepoint.com/personal/mdraihan_mia_marquette_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmdraihan%5Fmia%5Fmarquette%5Fedu%2FDocuments%2FSMT%5FLearner%5FICLR26%2Epdf&parent=%2Fpersonal%2Fmdraihan%5Fmia%5Fmarquette%5Fedu%2FDocuments&ga=1" target="_blank">SMT-Learner: Movement Trajectory Learning to Decode Motor Control Strategies. ICLR 2026. (In review).</a></li>
-                <li><a class="project-link publication" href="https://doi.org/10.2196/57802" target="_blank">Gamified mHealth System for Evaluating Upper Limb Motor Performance in Children: Cross-Sectional Feasibility Study. JMIR Serious Games, 2025.</a></li>
-                <li><a class="project-link publication" href="https://www.asnr.com/files/Past%20Meeting%20Programs/ASNR2025_Program.pdf" target="_blank">Self-Supervised Learning to Quantify Motor Control Strategies... ASNR Annual Meeting 2025 (Abstract & Poster)</a></li>
-                <li><a class="project-link publication" href="https://doi.org/10.1016/j.apmr.2025.03.028" target="_blank">Motor Skill Learning in School-Age Children Tested with a Gamified Mobile Health System. Archives of PM&R, 2025 (Abstract)</a></li>
-                <li><a class="project-link publication" href="https://doi.org/10.1089/g4h.2023.0224" target="_blank">A Scoping Review on Mobile Health Technology for Upper Limb Motor Function in Children with Motor Impairments. Games for Health Journal, 2024.</a></li>
+                <li><a class="project-link publication" href="https://marq-my.sharepoint.com/:b:/g/personal/mdraihan_mia_marquette_edu/IQA92s-njti2RprKkhREhRiQAX0DmnaWnLpcw__QRPl6sPo?e=qcIKSH" target="_blank">A Deep Learning Framework for Assessing Pediatric Upper-limb Motor Control and Gamified Mobile Rehabilitation. IEEE Transactions on Neural Systems and Rehabilitation Engineering (Under Review).</a></li>
+                <li><a class="project-link publication" href="https://doi.org/10.2196/57802" target="_blank">Gamified mHealth System for Evaluating Upper Limb Motor Performance in Children: JMIR Serious Games, 2025.</a></li>
+                <li><a class="project-link publication" href="https://www.asnr.com/files/Past%20Meeting%20Programs/ASNR2025_Program.pdf" target="_blank">Self-Supervised Learning to Quantify Motor Control Strategies. ASNR 2025.</a></li>
               </ul>
             </div>
           </div>
@@ -613,22 +592,20 @@
 
         <!-- HIPAAChecker.health -->
         <div class="project-item">
-          <h3 class="project-title"><a href="https://www.hipaachecker.health" target="_blank">HIPAAChecker.health</a> - <span class="project-subtitle">Healthcare Application Security and Privacy Assessment Tools</span></h3>
+          <h3 class="project-title"><a href="https://www.hipaachecker.health" target="_blank">HIPAAChecker.health</a> - <span class="project-subtitle">Healthcare Security and Privacy Assessment</span></h3>
           <div class="project-image-container">
             <img src="/assets/img/myimg/hipaachecker-dashboard.png" alt="HIPAAChecker.health" class="project-image" style="width: 60%; height: auto;">
           </div>
           <div class="project-content">
             <p class="project-description">
-              A sophisticated mHealth application security and privacy vulnerability screening platform. This tool performs comprehensive static and dynamic analysis to ensure healthcare mobile applications comply with HIPAA regulations and privacy standards.
+              Security and privacy assessment platform for mHealth apps using static + dynamic analysis and HIPAA-aligned risk scoring.
             </p>
             <div class="project-highlights">
               <div class="highlight-title">Research direction: HIPAAScoring Model</div>
               <ul class="highlight-list">
-                <li>Addresses the gap in healthcare-specific, quantifiable security measures to guide developers and prevent HIPAA violations.</li>
-                <li>HIPAA threat model with 272 security patterns across four categories: Insufficient Authorization, Inadequate Data Security, Insecure Network Communication, and Inconsistent Audit Trail.</li>
-                <li>Integrates CVSS v4.0 metrics and NIST SP 800-66r2 to quantify a HIPAA Risk Score impacted by implemented security controls.</li>
-                <li>New annotated HIPAA benchmark dataset of 78 healthcare applications; evaluated via expert annotation and participatory design (15 testers).</li>
-                <li>Statistical validation: significant difference between compliant vs non-compliant apps (p < 0.001); logistic regression AUC = 0.891, optimal threshold 0.575 with 84% accuracy (precision 82%, recall 88%).</li>
+                <li>HIPAA threat model with 272 security patterns across four categories</li>
+                <li>Risk score integrates CVSS v4.0 and NIST SP 800-66r2</li>
+                <li>Annotated dataset of 78 healthcare apps; validated with expert review</li>
               </ul>
             </div>
             <div class="project-tech">
@@ -644,11 +621,9 @@
             <div class="project-highlights">
               <div class="highlight-title">Contributions:</div>
               <ul class="highlight-list">
-                <li>Designed and implemented static and dynamic analysis pipelines for HIPAA compliance screening.</li>
-                <li>Developed HIPAAScoring — a HIPAA vulnerability risk scoring model integrating CVSS v4.0 and NIST SP 800-66r2 for quantifiable security assessment.</li>
-                <li>Built and deployed a HIPAA LLM API infrastructure on AWS g4dn; integrated with the HIPAACHECKER.HEALTH platform using a fine-tuned 120B open-source model.</li>
-                <li>Led a 16-member technical team to design, implement, and productionize security assessment tools.</li>
-                <li>Conducted experiments, authored reports/publications, and contributed to NIH STTR grant deliverables.</li>
+                <li>Built static/dynamic analysis pipelines for HIPAA compliance screening</li>
+                <li>Developed HIPAAScoring risk model with CVSS v4.0 + NIST SP 800-66r2</li>
+                <li>Deployed HIPAA LLM API infrastructure on AWS and integrated into platform</li>
               </ul>
             </div>
             <div class="project-links">
@@ -662,7 +637,7 @@
             <div class="project-highlights">
               <div class="highlight-title">Related Publications:</div>
               <ul class="highlight-list">
-                <li>HIPAAScoring: Vulnerability Scoring Model for HIPAA Security and Privacy Assessment. USENIX Security 2026. (In review).</li>
+                <li><a class="project-link publication" href="/pages/publications.html" target="_blank">HIPAAScoring: Vulnerability Scoring Model for HIPAA Security and Privacy Assessment. ACM Transactions on Privacy and Security (Under Review).</a></li>
                 <li><a class="project-link publication" href="https://doi.org/10.1109/COMPSAC61105.2024.00390" target="_blank">Enhancing HIPAA Compliance in AI-driven mHealth Devices Security and Privacy. IEEE COMPSAC 2024.</a></li>
                 <li><a class="project-link publication" href="https://doi.org/10.1016/j.smhl.2022.100349" target="_blank">A comparative study on HIPAA technical safeguards assessment of android mHealth applications. Smart Health 2022.</a></li>
               </ul>
