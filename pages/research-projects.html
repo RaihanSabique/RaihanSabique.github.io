@@ -8,480 +8,437 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <style>
+    /* =========================================================
+       OVERFLOW CONTAINMENT  (fixes horizontal scroll on mobile)
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    html, body { max-width: 100%; }
+
+    /* overflow-x:clip contains overflow WITHOUT creating a scroll container,
+       so position:sticky (navbar + project rail) keeps working. */
+    @supports (overflow-x: clip) {
+      html, body { overflow-x: clip; }
+    }
+    /* Older browsers: fall back to hidden (sticky may degrade, but no h-scroll). */
+    @supports not (overflow-x: clip) {
+      html, body { overflow-x: hidden; }
+    }
+
+    /* style.css sets .navbar-menu { width:100vw } ONLY inside its <=900px block,
+       where 100vw exceeds the viewport when a scrollbar is present.
+       Scope the fix to that breakpoint — applying it on desktop would stretch
+       the menu across the container and break its right alignment
+       (.navbar-container uses justify-content: space-between). */
+    .navbar-custom, .navbar-container { max-width: 100%; }
+    @media (max-width: 900px) {
+      .navbar-menu { width: 100% !important; max-width: 100% !important; }
+    }
+
+    /* Nothing may exceed its container */
+    img, video, svg, iframe, table, pre { max-width: 100%; }
+
+    /* Grid/flex children default to min-width:auto, which lets a scrolling child
+       (the chip rail) stretch its track past the viewport. Reset it everywhere. */
+    .rp-layout, .rp-sidebar, .rp-panels, .rp-panel,
+    .project-item, .project-content, .project-image-container,
+    .project-links, .tech-stack, .project-highlights {
+      min-width: 0;
+      max-width: 100%;
+    }
+
     main {
-      max-width: 1400px;
+      max-width: 100%;
+      width: 100%;
       margin: 0 auto;
       padding: 1.5rem;
       margin-top: 0;
     }
+    @supports (overflow-x: clip) {
+      main { overflow-x: clip; }
+    }
+    .rp-layout { width: 100%; }
 
-    .projects-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-top: 1rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+    .rp-header { max-width: 1300px; margin: 0 auto 1.25rem auto; }
+    .rp-header h1 { font-size: 2rem; font-weight: 700; color: #222; margin: 0 0 .4rem 0; }
+    .rp-header p { color: #666; font-size: 1.05rem; line-height: 1.6; margin: 0; }
+
+    /* ---- Two-column layout: sidebar list + detail panel ---- */
+    .rp-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: start;
+      max-width: 1300px;
+      margin: 0 auto;
     }
 
+    .rp-sidebar {
+      position: sticky;
+      top: 80px;
+      background: #fff;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+      padding: .75rem;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+    }
+    .rp-sidebar h2 {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #8a8f98;
+      margin: .4rem .6rem .6rem .6rem;
+      font-weight: 700;
+    }
+    .rp-nav { list-style: none; margin: 0; padding: 0; }
+    .rp-nav li { margin: 0 0 .25rem 0; }
+    .rp-nav button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      border-left: 3px solid transparent;
+      border-radius: 8px;
+      padding: .7rem .75rem;
+      cursor: pointer;
+      font: inherit;
+      color: #333;
+      line-height: 1.35;
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
+    }
+    .rp-nav button:hover { background: #f4f7fb; }
+    .rp-nav button .rp-nav-title { display: block; font-weight: 600; font-size: 1rem; }
+    .rp-nav button .rp-nav-tag {
+      display: block; font-size: .8rem; color: #7a8290; margin-top: .18rem;
+    }
+    .rp-nav button.active {
+      background: #eef5ff;
+      border-left-color: #007bff;
+      color: #0056b3;
+    }
+    .rp-nav button.active .rp-nav-tag { color: #4a7fb5; }
+    .rp-nav button:focus-visible { outline: 2px solid #007bff; outline-offset: 2px; }
+
+    .rp-panels { min-width: 0; }
+    .rp-panel { display: none; }
+    .rp-panel.active { display: block; animation: rpFade .22s ease; }
+    @keyframes rpFade { from { opacity: 0; transform: translateY(6px);} to { opacity:1; transform:none;} }
+
+    /* ---- Project card ---- */
     .project-item {
       background: #fff;
       border-radius: 12px;
       overflow: visible;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
       border: 1px solid #e9ecef;
       display: block;
-      min-height: auto;
-      padding: 1.5rem;
-    }
-
-    .project-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      padding: 1.75rem;
     }
 
     .project-image-container {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      margin: 0 0 1.25rem 0;
-      text-align: center;
-      background: transparent;
-      padding: 0;
-      border: 0;
-      box-shadow: none;
+      display: block; width: 100%; max-width: 100%;
+      margin: 0 0 1.25rem 0; text-align: center;
+      background: transparent; padding: 0; border: 0; box-shadow: none;
     }
-
     .project-image {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      object-position: center;
-      transition: transform 0.3s ease;
-      border-radius: 6px;
-      max-width: 100%;
-      display: block;
-      margin: 0 auto;
+      width: 100%; height: auto; object-fit: contain; object-position: center;
+      border-radius: 6px; max-width: 100%; display: block; margin: 0 auto;
     }
-
-    .project-item:hover .project-image {
-      transform: scale(1.03);
-    }
-
-    .project-content {
-      overflow: visible;
-      display: block;
-      clear: both;
-    }
+    .project-content { overflow: visible; display: block; clear: both; }
 
     .project-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 0.8rem;
-      line-height: 1.3;
-      text-align: center;
+      font-size: 1.6rem; font-weight: 700; color: #222;
+      margin: 0 0 1rem 0; line-height: 1.3; text-align: left;
     }
+    .project-subtitle { font-weight: 500; color: #667; font-size: 1.1rem; }
 
     .project-description {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-  font-size: 1.1rem;
-      text-align: left;
+      color: #555; line-height: 1.7; margin-bottom: 1rem; font-size: 1.05rem; text-align: left;
     }
 
-    .project-tech {
-      margin-bottom: 1rem;
-    }
-
+    .project-tech { margin-bottom: 1.1rem; }
     .tech-label {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 0.5rem;
-      display: block;
-      font-size: 1rem;
+      font-weight: 700; color: #333; margin-bottom: .5rem;
+      display: block; font-size: .95rem;
     }
-
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.8rem;
-    }
-
+    .tech-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
     .tech-tag {
-      background: transparent;
-      color: #495057;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: 1px solid #dee2e6;
-      display: inline;
+      background: #f1f4f8; color: #495057; padding: .25rem .6rem;
+      border-radius: 20px; font-size: .85rem; border: 1px solid #e3e8ef;
     }
 
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      clear: both;
-      margin-top: 1rem;
-    }
+    .project-highlights { margin-bottom: 1.1rem; }
+    .project-highlights ul { margin: .35rem 0 0 0; padding-left: 1.2rem; }
+    .project-highlights li { color: #555; line-height: 1.65; margin-bottom: .4rem; font-size: 1.02rem; }
 
+    .project-links { display: flex; flex-wrap: wrap; gap: .6rem; margin: .9rem 0; }
     .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0.9rem;
-      background: transparent;
-      color: #007bff;
-      text-decoration: none;
-      border-radius: 6px;
-      border: 1px solid #007bff;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem .85rem; border-radius: 6px;
+      background: #f8f9fa; border: 1px solid #e3e8ef;
+      color: #007bff; text-decoration: none; font-size: .95rem;
+      transition: background .2s ease, color .2s ease;
     }
+    .project-link:hover { background: #eef5ff; color: #0056b3; }
+    .project-link.publication {
+      display: inline; padding: 0; background: none; border: 0; font-size: inherit;
+    }
+    .project-link.publication:hover { text-decoration: underline; background: none; }
+    .project-link.youtube { color: #c4302b; }
 
-    .project-link:hover {
-      background: #007bff;
-      color: #fff;
-    }
+    a { color: #007bff; }
+    a:hover { color: #0056b3; }
 
-    .project-link.github,
-    .project-link.publication,
-    .project-link.youtube { 
-      background: transparent; 
-      color: #007bff; 
-      border-color: #007bff;
-    }
-    .project-link.github:hover,
-    .project-link.publication:hover,
-    .project-link.youtube:hover { 
-      background: #007bff; 
-      color: #fff; 
-      border-color: #007bff;
-    }
+    .rp-nav-short { display: none; }
 
-    .project-highlights {
-      background: #f8f9fa;
-      padding: 1.2rem;
-      border-radius: 8px;
-      margin: 1.2rem 0;
-      border-left: 4px solid #007bff;
-    }
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
 
-    .highlight-title {
-      font-weight: 600;
-      color: #333;
-      margin: 1rem 0 0.5rem 0;
-      font-size: 1rem;
-      border-left: 3px solid #007bff;
-      padding-left: 0.8rem;
-    }
+    /* Tablet / small laptop: single column, sidebar becomes a rail */
+    @media (max-width: 950px) {
+      main { padding: 1rem 0.85rem; }
+      .rp-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 
-    .highlight-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-
-    .highlight-list li {
-      padding: 0.2rem 0;
-      margin-bottom: 0.2rem;
-      position: relative;
-      padding-left: 1.2rem;
-      color: #666;
-      line-height: 1.5;
-    }
-      /* Visibility improvements */
-      .project-title {
-        color: #111;
-        font-size: 1.35rem;
-        font-weight: 700;
+      .rp-sidebar {
+        position: sticky;
+        top: 56px;               /* clears the 56px sticky navbar on mobile */
+        z-index: 900;            /* below navbar (1000), above page content */
+        max-height: none;
+        overflow: visible;
+        padding: .5rem .35rem;
+        border-radius: 10px;
+        background: rgba(255,255,255,.97);
+        backdrop-filter: saturate(180%) blur(6px);
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 6px rgba(0,0,0,.06);
       }
-      .project-description,
-      .project-content p,
-      .research-description p {
-        color: #2b2b2b;
-  font-size: 1.1rem;
-        line-height: 1.75;
-      }
-      .highlight-list li,
-      .project-content li {
-        color: #2b2b2b;
-  font-size: 1.1rem;
-        line-height: 1.7;
-      }
-      .tech-tag {
-        color: #222;
-        border-color: #cbd5e1;
-      }
-      .tech-label, .highlight-title {
-        color: #111;
-        font-weight: 700;
-      }
+      .rp-sidebar h2 { display: none; }
 
-    .highlight-list li:before {
-      content: "•";
-      color: #007bff;
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }    h1 {
-      text-align: center;
-      color: #333;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .page-subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .project-item {
-        padding: 1rem;
-      }
-
-      .project-image-container {
+      /* Horizontal scrolling chip rail */
+      .rp-nav {
+        display: flex;
+        gap: .45rem;
         width: 100%;
         max-width: 100%;
-        margin: 0 0 1rem 0;
-        padding: 0;
+        min-width: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        padding: .15rem .1rem .35rem .1rem;
+        margin: 0;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
       }
+      .rp-nav::-webkit-scrollbar { height: 4px; }
+      .rp-nav::-webkit-scrollbar-thumb { background: #d3d9e0; border-radius: 4px; }
+      .rp-nav li { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
 
-      .project-image {
-        width: 100%;
-        height: auto;
+      .rp-nav button {
+        border-left: 0;
+        border: 1px solid #e3e8ef;
+        border-radius: 999px;
+        background: #f8f9fb;
+        white-space: nowrap;
+        padding: .6rem .9rem;      /* >=44px touch target */
+        min-height: 44px;
+        font-size: .95rem;
+        font-weight: 600;
       }
-
-      .project-content {
-        overflow: visible;
+      .rp-nav button.active {
+        background: #007bff;
+        border-color: #007bff;
+        color: #fff;
       }
+      .rp-nav button .rp-nav-title,
+      .rp-nav button .rp-nav-tag { display: none; }
+      .rp-nav button .rp-nav-short { display: block; font-weight: 600; }
 
-      .project-description {
-        text-align: left;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
+      /* Card + typography */
+      .project-item { padding: 1.15rem; border-radius: 10px; }
       .project-title {
-        font-size: 1.5rem;
-        text-align: center;
+        font-size: 1.15rem;
+        line-height: 1.3;
+        text-align: left;
+        margin-bottom: .75rem;
+        hyphens: auto;
+        -webkit-hyphens: auto;
       }
+      .project-subtitle { font-size: .92rem; display: block; margin-top: .2rem; font-weight: 500; }
+      .project-description { font-size: 1rem; line-height: 1.65; }
+      .project-highlights li { font-size: .98rem; }
+      .rp-header { margin-bottom: .9rem; }
+      .rp-header h1 { font-size: 1.5rem; }
+      .rp-header p { font-size: .98rem; }
 
-      .project-links {
-        flex-direction: column;
+      /* Override hard-coded inline widths (60%/50%) so images fill the card */
+      .project-image,
+      .project-item img,
+      .project-item video {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
       }
+      .project-image-container {
+        display: block !important;
+        gap: 1rem !important;
+        margin-bottom: 1rem;
+      }
+      .project-image-container > div {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 1rem;
+      }
+    }
 
-      .project-link {
+    /* Phones */
+    @media (max-width: 600px) {
+      main { padding: .75rem .6rem; }
+      .rp-sidebar { padding: .45rem .3rem; }
+      .rp-nav button { font-size: .9rem; padding: .55rem .8rem; }
+      .project-item { padding: .95rem; }
+      .project-title { font-size: 1.02rem; line-height: 1.32; margin-bottom: .65rem; }
+      .project-subtitle { font-size: .88rem; }
+      .project-description { font-size: .97rem; }
+      .project-highlights ul { padding-left: 1.05rem; }
+      .project-highlights li { font-size: .95rem; line-height: 1.6; }
+      .rp-header h1 { font-size: 1.35rem; }
+
+      /* Links become full-width tappable rows */
+      .project-links { flex-direction: column; align-items: stretch; gap: .5rem; }
+      .project-links .project-link {
         justify-content: center;
+        min-height: 44px;
+        font-size: .95rem;
       }
-    }    @media (max-width: 480px) {
-      .tech-stack {
-        flex-direction: column;
-        align-items: flex-start;
+      .project-link.publication {
+        display: inline; min-height: 0; justify-content: flex-start;
       }
+      .tech-tag { font-size: .8rem; padding: .22rem .55rem; }
+    }
 
-      .tech-tag {
-        margin-bottom: 0.3rem;
+    /* Small phones (iPhone SE / mini): tighten titles further */
+    @media (max-width: 400px) {
+      .project-title { font-size: .95rem; line-height: 1.3; }
+      .project-subtitle { font-size: .84rem; }
+      .project-item { padding: .8rem; }
+      .rp-header h1 { font-size: 1.22rem; }
+      .rp-header p { font-size: .92rem; }
+      .rp-nav button { font-size: .85rem; padding: .5rem .7rem; }
+    }
+
+    /* Prevent long URLs / model names from overflowing on any screen */
+    .project-description,
+    .project-highlights li,
+    .project-title,
+    .rp-header p,
+    .project-link { overflow-wrap: anywhere; word-break: break-word; }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .rp-panel.active { animation: none; }
+      * { scroll-behavior: auto !important; }
+    }
+
+
+    /* =========================================================
+       OVERRIDE global style.css heading rules.
+       style.css sets:  h3 { padding:30px 40px; margin-bottom:60px;
+                             text-transform:uppercase; font-weight:200 }
+       and, inside its mobile blocks:
+                        .section h2, .section h3 { font-size:1.2rem !important;
+                             position:relative !important; z-index:100 !important }
+       Those !important declarations beat normal rules, so the project titles
+       kept their old size and picked up stray padding. Reset them explicitly.
+       ========================================================= */
+    main section .rp-panel .project-item h3.project-title,
+    main section .rp-panel .project-item h4.project-title {
+      font-size: 1.6rem !important;
+      font-weight: 700 !important;
+      line-height: 1.3 !important;
+      color: #222 !important;
+      margin: 0 0 1.4rem 0 !important;
+      padding: 0 0 .8rem 0 !important;
+      border-bottom: 1px solid #eef1f5 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+      position: static !important;
+      z-index: auto !important;
+      text-align: left !important;
+      width: auto !important;
+      max-width: 100% !important;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    main section .rp-panel .project-item .project-subtitle {
+      font-size: 1.05rem !important;
+      font-weight: 500 !important;
+      color: #667 !important;
+      text-transform: none !important;
+    }
+
+    @media (max-width: 950px) {
+      main section .rp-panel .project-item h3.project-title,
+      main section .rp-panel .project-item h4.project-title {
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+        margin: 0 0 1.35rem 0 !important;   /* space between title and content */
+        padding-bottom: .7rem !important;
+        border-bottom: 1px solid #eef1f5 !important;
       }
-
-      .project-content {
-        padding: 1.2rem;
+      main section .rp-panel .project-item .project-subtitle {
+        font-size: .9rem !important;
+        display: block !important;
+        margin-top: .3rem !important;
       }
-
-      .project-title {
-        font-size: 1.3rem;
+      /* Normalise spacing of whatever follows the title */
+      main section .rp-panel .project-item p,
+      main section .rp-panel .project-item ul {
+        margin-top: .6rem !important;
       }
-
-      .project-image {
-        max-height: 180px;
+      main section .rp-panel .project-item .project-title + * {
+        margin-top: 0 !important;
       }
+      main section .rp-panel .project-item .project-image-container { margin-top: 0 !important; }
+      main section .rp-panel .project-item .project-content { padding-top: .1rem; }
+      main section .rp-panel .project-item .project-description { margin-bottom: 1.1rem !important; }
+      main section .rp-panel .project-item .project-highlights,
+      main section .rp-panel .project-item .project-tech { margin-top: 1.15rem !important; }
     }
 
-    /* Research Directions Styles */
-    .research-directions {
-      margin: 1.5rem 0;
-      padding: 0;
-      background: transparent;
-      border-radius: 0;
-      border-left: none;
-    }
-
-    .research-item {
-      margin-bottom: 1.5rem;
-      padding: 0;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      border-left: 3px solid #007bff;
-      padding-left: 1rem;
-    }
-
-    .research-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .research-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-
-    .research-content {
-      display: block;
-      overflow: visible;
-    }
-
-    .research-figure {
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto 1.5rem auto;
-      text-align: center;
-      background: transparent;
-      padding: 0.8rem;
-      border-radius: 8px;
-      border: 1px solid #dee2e6;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .research-image {
-      width: 100%;
-      height: auto;
-      max-height: 200px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 6px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .research-description {
-      overflow: visible;
-    }
-
-    .research-description p {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-  font-size: 1.1rem;
-      text-align: left;
-    }
-
-    .research-link {
-      margin-top: 1rem;
-    }
-
-    .research-link .project-link {
-      font-size: 0.8rem;
-      padding: 0.45rem 0.75rem;
-      background: transparent;
-      color: #007bff;
-      border: 1px solid #007bff;
-    }
-    .research-link .project-link:hover {
-      background: #007bff;
-      color: #fff;
-    }
-
-    /* Ensure inline links in project content are blue */
-    .project-content a:not(.project-link),
-    .research-description a {
-      color: #007bff;
-      text-decoration: underline;
-    }
-
-    /* Funding Section Styles */
-    .funding-section {
-      margin: 1.5rem 0;
-      padding: 0;
-      background: transparent;
-    }
-
-    .funding-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .funding-item {
-      padding: 0;
-      background: transparent;
-      border-left: 3px solid #28a745;
-      padding-left: 1rem;
-    }
-
-    .funding-title {
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    .funding-link {
-      margin-top: 0.3rem;
-    }
-
-    .funding-link .project-link {
-      background: #28a745;
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
-    }
-
-    .funding-link .project-link:hover {
-      background: #218838;
-    }
-
-    @media (max-width: 768px) {
-      .research-figure {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto 1.5rem auto;
-        padding: 0.6rem;
+    @media (max-width: 600px) {
+      main section .rp-panel .project-item h3.project-title,
+      main section .rp-panel .project-item h4.project-title {
+        font-size: .98rem !important;
+        line-height: 1.4 !important;
+        margin: 0 0 1.25rem 0 !important;
+        padding-bottom: .65rem !important;
       }
-
-      .research-image {
-        max-height: 180px;
-      }
-
-      .research-description p {
-        text-align: left;
-      }
-
-      .research-directions {
-        padding: 0;
-      }
-
-      .research-item {
-        padding: 0;
-        padding-left: 0.8rem;
-      }
-
-      .research-title {
-        font-size: 1.1rem;
-      }
+      main section .rp-panel .project-item .project-subtitle { font-size: .85rem !important; }
     }
+
+    @media (max-width: 400px) {
+      main section .rp-panel .project-item h3.project-title,
+      main section .rp-panel .project-item h4.project-title {
+        font-size: .92rem !important;
+        line-height: 1.4 !important;
+        margin: 0 0 1.15rem 0 !important;
+        padding-bottom: .6rem !important;
+      }
+      main section .rp-panel .project-item .project-subtitle { font-size: .82rem !important; }
+    }
+
   </style>
 </head>
+
 <body>
   <nav class="navbar-custom">
     <div class="navbar-container">
@@ -506,15 +463,155 @@
   </nav>
   <main>
     <section>
-      <!-- <h1>Research & Projects</h1> -->
-      <!-- <p style="text-align: center; font-size: 30px;">
-        Research focus on mobile health and neurorehabilitation systems, edge AI + mobile BCI for real-time motor training, and healthcare security & privacy.
-      </p> -->
-      <div class="projects-container">
+      <div class="rp-header">
+        <h1>Research &amp; Projects</h1>
+        <p>
+          Foundation models and agentic AI for biomedical systems, real-time multimodal sensing and
+          edge inference, and large-scale healthcare data curation &mdash; built end to end and evaluated
+          for deployment. Select a project to view details.
+        </p>
+      </div>
 
-        <!-- NEW PROJECT: Motor Imagery Driven Mobile BCI for Motor Training and Neurorehabilitation -->
+      <div class="rp-layout">
+        <!-- Sidebar project list -->
+        <aside class="rp-sidebar">
+          <h2>Projects</h2>
+          <ul class="rp-nav" role="tablist">
+          <li>
+            <button type="button" data-target="rp-agentic" role="tab" class="active" aria-selected="true" aria-controls="rp-agentic">
+              <span class="rp-nav-title">Agentic AI &amp; LLM Systems</span>
+              <span class="rp-nav-short">Agentic AI &amp; LLMs</span>
+              <span class="rp-nav-tag">Ubicomply.ai &middot; Production</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-mbci" role="tab" aria-selected="false" aria-controls="rp-mbci">
+              <span class="rp-nav-title">Mobile BCI for Motor Training</span>
+              <span class="rp-nav-short">Mobile BCI</span>
+              <span class="rp-nav-tag">Dissertation &middot; NMDSI Award</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-smt" role="tab" aria-selected="false" aria-controls="rp-smt">
+              <span class="rp-nav-title">SMT-Learner: Foundation Model</span>
+              <span class="rp-nav-short">SMT-Learner</span>
+              <span class="rp-nav-tag">Dissertation &middot; IEEE TNSRE</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-mlg" role="tab" aria-selected="false" aria-controls="rp-mlg">
+              <span class="rp-nav-title">motorlearning.games mHealth Platform</span>
+              <span class="rp-nav-short">motorlearning.games</span>
+              <span class="rp-nav-tag">NIH R03 &middot; R21 &middot; C-STAR</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-hipaa" role="tab" aria-selected="false" aria-controls="rp-hipaa">
+              <span class="rp-nav-title">HIPAAChecker.health</span>
+              <span class="rp-nav-short">HIPAAChecker</span>
+              <span class="rp-nav-tag">NIH STTR Phase I+II</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-ncdw" role="tab" aria-selected="false" aria-controls="rp-ncdw">
+              <span class="rp-nav-title">National Clinical Data Warehouse</span>
+              <span class="rp-nav-short">Data Warehouse</span>
+              <span class="rp-nav-tag">Elsevier Best Paper 2022</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-nba" role="tab" aria-selected="false" aria-controls="rp-nba">
+              <span class="rp-nav-title">NBA-Search Analytics</span>
+              <span class="rp-nav-short">NBA-Search</span>
+              <span class="rp-nav-tag">Open source</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-vint" role="tab" aria-selected="false" aria-controls="rp-vint">
+              <span class="rp-nav-title">vInternship.org</span>
+              <span class="rp-nav-short">vInternship</span>
+              <span class="rp-nav-tag">Education platform</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-rpa" role="tab" aria-selected="false" aria-controls="rp-rpa">
+              <span class="rp-nav-title">Robotic Process Automation (Banking)</span>
+              <span class="rp-nav-short">RPA (Banking)</span>
+              <span class="rp-nav-tag">Era Infotech</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-target="rp-archive" role="tab" aria-selected="false" aria-controls="rp-archive">
+              <span class="rp-nav-title">Digital Document Archive System</span>
+              <span class="rp-nav-short">Doc Archive</span>
+              <span class="rp-nav-tag">Govt. of Bangladesh</span>
+            </button>
+          </li>
+          </ul>
+        </aside>
+
+        <!-- Project detail panels -->
+        <div class="rp-panels">
+        <div class="rp-panel active" id="rp-agentic" role="tabpanel">
         <div class="project-item">
-          <h3 class="project-title">Mobile BCI for Game-based Motor Training and Neurorehabilitation</h3> <br>
+          <h3 class="project-title">Agentic AI &amp; LLM Systems for Regulated Domains &mdash; <a href="https://ubicomply.ai/" target="_blank">Ubicomply.ai</a></h3>
+          <div class="project-image-container">
+            <img src="/assets/img/myimg/ubicomply_arcitecture.png"
+                 alt="Ubicomply.ai LLM and agentic-AI infrastructure architecture: SAST, DAST and policy-analysis pipelines served on AWS g4dn GPU instances"
+                 class="project-image" loading="lazy">
+            <p class="project-description" style="text-align:center; margin-top:.5rem; font-size:.95rem; color:#777;">
+              Ubicomply.ai LLM and agentic-AI infrastructure &mdash; SAST, DAST, and policy-analysis
+              pipelines served on AWS <code>g4dn</code> GPU instances.
+            </p>
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              As <b>Founding Research Director</b>, I lead HPC infrastructure and agentic-AI engineering teams
+              (~10 engineers and developers) building production systems that reason over clinical and
+              regulatory corpora, with the evaluation and governance layer required to deploy them responsibly.
+            </p>
+            <div class="project-highlights">
+              <span class="tech-label">Key contributions</span>
+              <ul>
+                <li><b>Shipped the Ubicomply.ai LLM and agentic-AI infrastructure</b>, deployed on <b>AWS <code>g4dn</code></b> GPU instances &mdash; powering <b>SAST</b> (static application security testing), <b>DAST</b> (dynamic application security testing), and <b>policy analysis</b> across a <b>multi-regulatory framework</b>, mapping findings to HIPAA, the NIST AI Risk Management Framework, and related controls in a single assessment pipeline.</li>
+                <li>Fine-tuned open-weight LLMs (Llama, Gemma, GPT-OSS) with LoRA/QLoRA/PEFT; engineered RAG pipelines and multi-agent orchestration for tool-augmented reasoning.</li>
+                <li>Shipped <a href="https://app.ubicomply.ai/" target="_blank">malURLBox</a>, an LLM-assisted dynamic-sandbox analyzer at <b>97.3% accuracy</b>, now distributed as a <a href="https://marketplace.microsoft.com/en-us/product/WA200011136?tab=Overview" target="_blank">Microsoft Outlook Extension</a>.</li>
+                <li>Built trajectory- and task-level <b>evaluation harnesses</b> &mdash; prospective/silent validation, quality-control gates, and production monitoring for agent behavior.</li>
+                <li>Compliance assessment tooling aligned to <b>HIPAA</b> and the <b>NIST AI Risk Management Framework</b>.</li>
+              </ul>
+            </div>
+            <div class="project-tech">
+              <span class="tech-label">Technologies</span>
+              <div class="tech-stack">
+                <span class="tech-tag">LangGraph</span>
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">vLLM / TGI</span>
+                <span class="tech-tag">LoRA / QLoRA / PEFT</span>
+                <span class="tech-tag">AWS g4dn</span>
+                <span class="tech-tag">SAST / DAST</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://ubicomply.ai/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Ubicomply.ai</a>
+              <a href="https://app.ubicomply.ai/" target="_blank" class="project-link"><i class="fas fa-flask"></i> malURLBox</a>
+            </div>
+            <div class="project-highlights">
+              <span class="tech-label">Related publications</span>
+              <ul>
+                <li><a class="project-link publication" href="/pages/publications.html">malURLBox: LLM-assisted malicious URL analysis for healthcare in a sandbox environment. <i>IEEE/ACM CHASE</i> 2026.</a></li>
+                <li><a class="project-link publication" href="/pages/publications.html">HIPAA Regulatory Assessment and Scoring System for Healthcare Applications. <i>ACM TOPS</i> (under review).</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="rp-panel" id="rp-mbci" role="tabpanel">
+        <div class="project-item">
+          <h3 class="project-title">Mobile BCI for Game-based Motor Training and Neurorehabilitation</h3>
           <div class="project-image-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
             <!-- <img src="/assets/img/myimg/Brain-Mobile-Interface-Loop-Updated.png" alt="Brain-Mobile Interface Loop" class="project-image" style="max-width: 440px;"> -->
             <img src="/assets/img/myimg/mBCI-Closed-Loop.png" alt="mBCI Closed Loop" class="project-image" style="max-width: 450px;">
@@ -535,10 +632,57 @@
             </p>
           </div>
         </div>
+        </div>
 
-        <!-- Motor Skills Learning App -->
+        <div class="rp-panel" id="rp-smt" role="tabpanel">
         <div class="project-item">
-          <h4 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) for pediatric motor assessment and learning analytics</h4>
+          <h3 class="project-title">SMT-Learner &mdash; Self-Supervised Foundation Model for Physiological Time-Series</h3>
+          <div class="project-content">
+            <p class="project-description">
+              A transformer auto-encoder trained with masked reconstruction on <b>~16,320 human</b> and
+              <b>~23,639 non-human-primate</b> movement trajectories, learning transferable representations of
+              motor behavior under sparse supervision. From these representations I derive a novel
+              <b>Exploration&ndash;Exploitation biomarker</b> that separates early- from late-phase motor skill
+              learning &mdash; a construct long theorized in motor neuroscience but difficult to measure outside
+              a laboratory.
+            </p>
+            <div class="project-highlights">
+              <span class="tech-label">Key contributions</span>
+              <ul>
+                <li>Masked-reconstruction pretraining over spatiotemporal movement trajectories.</li>
+                <li>Evaluation via frozen-encoder linear probing, <b>cross-cohort and cross-species transfer</b>, and systematic ablations on masking ratio and cohort size.</li>
+                <li>Cross-species transfer as evidence that representations capture motor-control structure rather than cohort-specific artifacts.</li>
+              </ul>
+            </div>
+            <div class="project-tech">
+              <span class="tech-label">Technologies</span>
+              <div class="tech-stack">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Transformers</span>
+                <span class="tech-tag">Self-Supervised Learning</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">HPC / GPU</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://anonymous.4open.science/r/SMT-Learner-0D32/README.md" target="_blank" class="project-link">
+                <i class="fas fa-code"></i> Codebase
+              </a>
+            </div>
+            <div class="project-highlights">
+              <span class="tech-label">Related publications</span>
+              <ul>
+                <li><a class="project-link publication" href="/pages/publications.html">A Deep Learning Framework for Assessing Pediatric Upper-limb Motor Control and Gamified Mobile Rehabilitation. <i>IEEE TNSRE</i>, 2026 (in revision).</a></li>
+                <li><a class="project-link publication" href="https://www.asnr.com/files/Past%20Meeting%20Programs/ASNR2025_Program.pdf" target="_blank">Self-Supervised Learning to Quantify Motor Control Strategies from Spatiotemporal Movement Trajectories in Young Children. <i>ASNR</i> 2025.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="rp-panel" id="rp-mlg" role="tabpanel">
+        <div class="project-item">
+          <h3 class="project-title">mHealth ecosystem (<a href="https://www.motorlearning.games/" target="_blank">motorlearning.games</a>) for pediatric motor assessment and learning analytics</h3>
           <div class="project-image-container">
             <img src="/assets/img/myimg/experimental_protocol.png" alt="Motor Skills Learning App" class="project-image">
           </div>
@@ -600,8 +744,7 @@
           </div>
         </div>
 
-
-        <!-- HIPAAChecker.health -->
+        <div class="rp-panel" id="rp-hipaa" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title"><a href="https://www.hipaachecker.health" target="_blank">HIPAAChecker.health</a> - <span class="project-subtitle">Healthcare Security and Privacy Assessment</span></h3>
           <div class="project-image-container">
@@ -655,8 +798,9 @@
             </div>
           </div>
         </div>
+        </div>
 
-         <!-- NCDW Bangladesh -->
+        <div class="rp-panel" id="rp-ncdw" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title">National Clinical Data Warehouse (NCDW) Bangladesh</h3>
           <div class="project-image-container">
@@ -707,8 +851,9 @@
             </div>
           </div>
         </div>
+        </div>
 
-        <!-- NBA-Search -->
+        <div class="rp-panel" id="rp-nba" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title">NBA-Search Analytics</h3>
           <div class="project-image-container">
@@ -745,8 +890,9 @@
             </div>
           </div>
         </div>
+        </div>
 
-        <!-- vInternship.org -->
+        <div class="rp-panel" id="rp-vint" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title"> <a href="https://vinternship.org" target="_blank">vInternship.org</a> - Supporting Blended Learning Environment
 Connecting Interns, Universities and Industries</h3>
@@ -795,8 +941,9 @@ Connecting Interns, Universities and Industries</h3>
             </div>
           </div>
         </div>
+        </div>
 
-        <!-- RPA System -->
+        <div class="rp-panel" id="rp-rpa" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title">Robotic Process Automation (RPA) to Automate Banking Operations</h3>
           <div class="project-image-container">
@@ -835,8 +982,9 @@ Connecting Interns, Universities and Industries</h3>
             </div>
           </div>
         </div>
+        </div>
 
-        <!-- Digital Archive -->
+        <div class="rp-panel" id="rp-archive" role="tabpanel">
         <div class="project-item">
           <h3 class="project-title">Digital Document Archive System for Planning Commission of Bangladesh Government</h3>
           <div class="project-image-container">
@@ -875,30 +1023,106 @@ Connecting Interns, Universities and Industries</h3>
             </div>
           </div>
         </div>
+        </div>
+        </div>
 
       </div>
     </section>
   </main>
 <script>
-  // Responsive navbar toggle for mobile
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
+    // ---- Navbar toggle (mobile) ----
     var toggle = document.querySelector('.navbar-toggle');
     var menu = document.querySelector('.navbar-menu');
-    
     if (toggle && menu) {
-      toggle.addEventListener('click', function(e) {
+      toggle.addEventListener('click', function (e) {
         e.preventDefault();
         menu.classList.toggle('open');
       });
     }
-    
-    // Close menu on link click (mobile)
-    document.querySelectorAll('.navbar-menu a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (window.innerWidth <= 900) {
-          menu.classList.remove('open');
+    document.querySelectorAll('.navbar-menu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 900 && menu) { menu.classList.remove('open'); }
+      });
+    });
+
+    // ---- Project sidebar switching ----
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.rp-nav button'));
+    var panels  = Array.prototype.slice.call(document.querySelectorAll('.rp-panel'));
+
+    // NOTE: switching projects intentionally does NOT modify the URL.
+    // Writing a hash here made the address bar change on every click and
+    // left a stale fragment behind when navigating away and back.
+    function show(targetId) {
+      var found = false;
+      panels.forEach(function (p) {
+        var on = (p.id === targetId);
+        p.classList.toggle('active', on);
+        if (on) { found = true; }
+      });
+      if (!found) { return false; }
+      buttons.forEach(function (b) {
+        var on = (b.getAttribute('data-target') === targetId);
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      return true;
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        show(btn.getAttribute('data-target'));
+        if (window.innerWidth <= 950) {
+          // keep the tapped chip visible in the rail
+          if (btn.scrollIntoView) {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+          // bring the panel just below the sticky rail into view
+          var rail = document.querySelector('.rp-sidebar');
+          var panelsEl = document.querySelector('.rp-panels');
+          if (panelsEl) {
+            var nav = document.querySelector('.navbar-custom');
+            var navH = nav ? nav.getBoundingClientRect().height : 0;
+            var offset = navH + (rail ? rail.getBoundingClientRect().height : 0) + 12;
+            var top = panelsEl.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+          }
         }
       });
+      // keyboard: arrow navigation between projects
+      btn.addEventListener('keydown', function (e) {
+        var i = buttons.indexOf(btn);
+        var next = null;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { next = buttons[i + 1]; }
+        if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  { next = buttons[i - 1]; }
+        if (next) {
+          e.preventDefault();
+          next.focus();
+          show(next.getAttribute('data-target'));
+        }
+      });
+    });
+
+    // ---- Deep link support (read-only): /pages/research-projects.html#smt ----
+    if (window.location.hash) {
+      var opened = show('rp-' + window.location.hash.replace(/^#/, ''));
+      // Clear the fragment so the nav link and the page URL stay identical.
+      if (opened && history.replaceState) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    // ---- Center the active chip in the mobile rail on load / rotate ----
+    function centerActiveChip() {
+      if (window.innerWidth > 950) { return; }
+      var active = document.querySelector('.rp-nav button.active');
+      if (active && active.scrollIntoView) {
+        active.scrollIntoView({ block: 'nearest', inline: 'center' });
+      }
+    }
+    centerActiveChip();
+    window.addEventListener('orientationchange', function () {
+      setTimeout(centerActiveChip, 250);
     });
   });
 </script>
